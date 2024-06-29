@@ -1,0 +1,12 @@
+﻿@using AppMVC.Areas.ProductManage.Models
+@model List<Product>
+@{
+    ViewData["Title"] = "Products";
+}
+
+<ul class="list-group">
+    @foreach (var product in Model)
+    {
+        <li asp-action="#" class="list-group-item">@product.ProductName</li>
+    }
+</ul>

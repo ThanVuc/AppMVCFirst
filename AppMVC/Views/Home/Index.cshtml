@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    var message = TempData["message"];
+
+}
+
+<partial name="_StatusMessage" model="@message" />
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+@* Generate Url Without Area *@
+@Url.Action("Mercury","Planet", new {id = 123,name="NoName"})
+<br />
+@Url.Action("Index", "Product", new { area = "ProductManage", id = 123, name = "NoName" })
+<br />
+@* Generate Url With Area *@
+@Url.Link("product",new { action = "Index", controller = "Product", id = "123", name = "sinh" })
+@Url.RouteUrl("product", new { area = "ProductManage" ,action = "Index", controller = "Product", id = "123", name = "sinh" })
+

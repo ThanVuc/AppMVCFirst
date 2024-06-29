@@ -1,0 +1,11 @@
+﻿@model List<PlanetModel>
+@{
+    ViewData["Title"] = "Planets";
+}
+<h3>Các Hành Tinh: </h3>
+<ul class="list-group">
+    @foreach (var planet in Model)
+    {
+        <a asp-action="@planet.Name" class="list-group-item">@planet.Name (@planet.VnName)</a>
+    }
+</ul>

@@ -1,0 +1,41 @@
+﻿@using System.Data
+@model dynamic
+@{
+    ViewData["Title"] = "Database Manage";
+
+}
+
+<h2>Infomation</h2>
+<p>- Database: @Model.DbName</p>
+<p>- Can Connec: @Model.Can_connect</p>
+<p>- Source: @Model.Connect.DataSource</p>
+<p>- State: @Model.Connect.State</p>
+
+<h2>Migrations</h2>
+@foreach (var migration in Model.Migrations)
+{
+    <p>@migration</p>
+}
+
+@foreach (var migration in Model.PendingMigration)
+{
+    <p>@migration (Pending)</p>
+}
+
+@if (Model.Can_connect)
+{
+    <h2>Tables</h2>
+    <ul>
+        @foreach (DataRow row in Model.Schema.Rows)
+        {
+            <li>@row["TABLE_NAME"]</li>
+        }
+    </ul>
+}
+<div class="d-flex">
+    <a asp-action="DeleteDB" class="btn btn-danger me-2 ">Delete DB</a>
+    <form method="post" asp-action="MigrateDB">
+        <input type="submit" class="btn btn-success" name="name" value="Create DB" />
+    </form>
+</div>
+

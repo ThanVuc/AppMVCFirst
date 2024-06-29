@@ -1,0 +1,15 @@
+﻿@model PlanetModel
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<div class="card" style="width: 50%;">
+    <img class="card-img-top" src="~/@Model.ImageUrl" alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title">@Model.Name (@Model.VnName)</h5>
+        <p class="card-text">@Model.Content</p>
+        <a href="/planet" class="btn btn-primary">Planets</a>
+    </div>
+</div>
+
+<img src="" />
