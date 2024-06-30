@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 namespace AppMVC.Areas.DatabaseManage.Controllers
 {
     [Area("DatabaseManage")]
-    [Route("DatabaseManage/{action=index}/{id?}")]
+    [Route("Database/{action=index}/{id?}")]
     public class Database : Controller
     {
         private readonly ILogger<Database> _logger;

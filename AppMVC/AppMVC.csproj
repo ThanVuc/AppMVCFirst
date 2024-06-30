@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.5.1" />
     <PackageReference Include="MailKit" Version="4.6.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" Version="8.0.6" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="8.0.6" />
@@ -22,9 +23,13 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.6">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.2" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGenerators.Mvc" Version="9.0.0-preview.4.24271.3" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGenerators.Mvc" Version="8.0.2" />
     <PackageReference Include="MimeKit" Version="4.6.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
@@ -42,6 +47,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\ContactManage\Data\" />
+    <Folder Include="Areas\ContactManage\Models\" />
     <Folder Include="Areas\DatabaseManage\Data\" />
     <Folder Include="Areas\DatabaseManage\Models\" />
     <Folder Include="Areas\ProductManage\Data\" />

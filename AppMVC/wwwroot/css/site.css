@@ -1,5 +1,5 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
@@ -19,4 +19,17 @@ html {
 
 body {
   margin-bottom: 60px;
+}
+
+.app-navbar{
+    background: black;
+    opacity: 0.8;
+}
+
+.app-navbar .text-color{
+    color: wheat !important;
+}
+
+.navbar-brand {
+    color: #be6fdc !important;
 }

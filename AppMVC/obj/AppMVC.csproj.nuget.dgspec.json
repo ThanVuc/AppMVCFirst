@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Asp.Net\\MVC\\AppMVC\\AppMVC.csproj": {}
+    "D:\\Asp.Net\\MVC\\AppMVCFirst\\AppMVC\\AppMVC.csproj": {}
   },
   "projects": {
-    "D:\\Asp.Net\\MVC\\AppMVC\\AppMVC.csproj": {
+    "D:\\Asp.Net\\MVC\\AppMVCFirst\\AppMVC\\AppMVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Asp.Net\\MVC\\AppMVC\\AppMVC.csproj",
+        "projectUniqueName": "D:\\Asp.Net\\MVC\\AppMVCFirst\\AppMVC\\AppMVC.csproj",
         "projectName": "AppMVC",
-        "projectPath": "D:\\Asp.Net\\MVC\\AppMVC\\AppMVC.csproj",
+        "projectPath": "D:\\Asp.Net\\MVC\\AppMVCFirst\\AppMVC\\AppMVC.csproj",
         "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "D:\\Asp.Net\\MVC\\AppMVC\\obj\\",
+        "outputPath": "D:\\Asp.Net\\MVC\\AppMVCFirst\\AppMVC\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -46,6 +46,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "EntityFramework": {
+              "target": "Package",
+              "version": "[6.5.1, )"
+            },
             "MailKit": {
               "target": "Package",
               "version": "[4.6.0, )"
@@ -96,6 +100,12 @@
               "target": "Package",
               "version": "[8.0.6, )"
             },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.6, )"
+            },
             "Microsoft.Extensions.Logging.Console": {
               "target": "Package",
               "version": "[8.0.0, )"
@@ -106,7 +116,7 @@
             },
             "Microsoft.VisualStudio.Web.CodeGenerators.Mvc": {
               "target": "Package",
-              "version": "[9.0.0-preview.4.24271.3, )"
+              "version": "[8.0.2, )"
             },
             "MimeKit": {
               "target": "Package",
