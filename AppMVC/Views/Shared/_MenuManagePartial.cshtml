@@ -1,16 +1,24 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Authorization
+
+@inject SignInManager<AppUser> _signInManager
+@inject UserManager<AppUser> _userManager
+@inject IAuthorizationService _authorizationService
+
+
+@if (_signInManager.IsSignedIn(User) && (await _authorizationService.AuthorizeAsync(User, "HighLevelManage")).Succeeded)
+{
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Manage
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/Database">Database</a></li>
+            <li><a class="dropdown-item" href="/Contact">Contact</a></li>
+            <li><a class="dropdown-item" href="/Role/Index">Role</a></li>
+            <li><a class="dropdown-item" href="/ManageUser/Index">UserManage</a></li>
+        </ul>
+    </div>
 }
 
-<div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Manage
-    </button>
-    <ul class="dropdown-menu" >
-        <li><a class="dropdown-item" href="/Database">Database</a></li>
-        <li><a class="dropdown-item" href="/Contact">Contact</a></li>
-    </ul>
-</div>
 

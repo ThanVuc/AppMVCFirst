@@ -1,9 +1,11 @@
 ﻿using AppMVC.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace AppMVC.Areas.DatabaseManage.Controllers
 {
+    [Authorize(policy: "HighLevelManage")]
     [Area("DatabaseManage")]
     [Route("Database/{action=index}/{id?}")]
     public class Database : Controller

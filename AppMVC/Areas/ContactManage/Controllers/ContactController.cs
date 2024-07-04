@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace AppMVC.Areas.ContactManage.Controllers
 {
+    [Authorize(policy: "HighLevelManage")]
     [Area("ContactManage")]
     public class ContactController : Controller
     {

@@ -33,3 +33,10 @@ body {
 .navbar-brand {
     color: #be6fdc !important;
 }
+
+.Customer-Manage{
+    width: 20%;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}

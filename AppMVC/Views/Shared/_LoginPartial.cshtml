@@ -1,0 +1,24 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <form asp-area="Identity" asp-controller="Account" asp-action="LogOff" method="post" id="logoutForm" class="navbar-right">
+        <div class="Login-Register">
+            <a href="/member/index" class="user-css">
+                <i class="fa-solid fa-user"></i>
+                <p class="item-size username">@(await UserManager.GetUserAsync(User))</p>
+            </a>
+            <input type="submit" class="btn btn-outline-primary item-size" value="Sign Out" />
+        </div>
+    </form>
+}
+else
+{
+    <div class="Login-Register" >
+        <a class="btn btn-outline-primary item-size" asp-area="Identity" asp-controller="Account" asp-action="Login">Sign In</a>
+        <a class="btn btn-outline-primary item-size" asp-area="Identity" asp-controller="Account" asp-action="Register">Sign Up</a>
+    </div>
+}

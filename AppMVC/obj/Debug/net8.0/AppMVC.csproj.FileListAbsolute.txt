@@ -584,3 +584,4 @@ D:\Asp.Net\MVC\AppMVCFirst\AppMVC\bin\Debug\net8.0\runtimes\win\lib\net7.0\Micro
 D:\Asp.Net\MVC\AppMVCFirst\AppMVC\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
 D:\Asp.Net\MVC\AppMVCFirst\AppMVC\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
 D:\Asp.Net\MVC\AppMVCFirst\AppMVC\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
+D:\Asp.Net\MVC\AppMVCFirst\AppMVC\bin\Debug\net8.0\libman.json

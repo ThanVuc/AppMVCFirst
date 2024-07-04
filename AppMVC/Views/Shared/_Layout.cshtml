@@ -7,7 +7,11 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/AppMVC.styles.css" asp-append-version="true" />
-    @RenderSection("Head",required: false)
+    <link href="~/lib/font-awesome/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/share/loginpartial.css" />
+
+    @RenderSection("head",false)
+
 </head>
 <body>
     <header>
@@ -30,7 +34,10 @@
                             <a class="nav-link text-color" asp-area="" asp-controller="Contact" asp-action="SendContact">Contact</a>
                         </li>
                     </ul>
-                    <partial name="_MenuManagePartial" />
+                    <div class="Customer-Manage" >
+                        <partial name="_LoginPartial" />
+                        <partial name="_MenuManagePartial" />
+                    </div>
                 </div>
             </div>
         </nav>

@@ -1,0 +1,26 @@
+﻿body {
+}
+
+.Login-Register{
+    display: flex;
+    flex-direction: row;
+}
+
+.Login-Register .item-size{
+    margin-right: 10px;
+    width: 7vw;
+}
+
+.user-css{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.user-css .username {
+    padding-left: 5px;
+    text-decoration: none;
+    position: relative;
+    top: 12%;
+    width: auto;
+}
