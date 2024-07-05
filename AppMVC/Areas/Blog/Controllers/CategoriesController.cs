@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using AppMVC.Models;
 using AppMVC.Models.Blog;
 using Microsoft.AspNetCore.Authorization;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace AppMVC.Areas.Blog.Controllers
 {
@@ -185,6 +186,33 @@ namespace AppMVC.Areas.Blog.Controllers
             {
                 ModelState.AddModelError(string.Empty, "Please, Choose Another Parent Category");
             }
+            // Take child of selected
+            var childCategory = await (from c in _context.Categories where c.ParentCategoryId == category.Id select c)
+                .Include(c => c.CategoryChildren).ToListAsync();
+
+            Action<IList<Category>> checkValidParent = null;
+            checkValidParent = (cates) =>
+            {
+                foreach (var cate in cates)
+                {
+                    Console.WriteLine(cate.Title);
+                    if (category.ParentCategoryId == cate.Id)
+                    {
+                        ModelState.AddModelError(string.Empty, "Please, Choose Another Parent Category");
+                        return;
+                    }
+
+                    if (cate.CategoryChildren != null)
+                    {
+                        Console.WriteLine("Entry Recursion");
+
+                        checkValidParent(cate.CategoryChildren.ToList());
+                    }
+                }
+            };
+
+            checkValidParent(childCategory);
+
 
 
             if (ModelState.IsValid)
