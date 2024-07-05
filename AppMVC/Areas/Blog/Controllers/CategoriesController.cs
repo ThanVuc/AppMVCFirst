@@ -7,11 +7,13 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AppMVC.Models;
 using AppMVC.Models.Blog;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AppMVC.Areas.Blog.Controllers
 {
     [Area("Blog")]
     [Route("Categories/{action=index}")]
+    [Authorize(policy: "HighLevelManage")]
     public class CategoriesController : Controller
     {
         private readonly AppDBContext _context;
