@@ -46,6 +46,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Blog\Data\" />
+    <Folder Include="Areas\Blog\Models\" />
     <Folder Include="Areas\ContactManage\Data\" />
     <Folder Include="Areas\ContactManage\Models\" />
     <Folder Include="Areas\DatabaseManage\Data\" />
@@ -55,6 +57,7 @@
     <Folder Include="Areas\Identity\Views\User\" />
     <Folder Include="Areas\Identity\Views\Role\" />
     <Folder Include="Areas\ProductManage\Data\" />
+    <Folder Include="smssave\" />
     <Folder Include="wwwroot\image\" />
   </ItemGroup>
 
