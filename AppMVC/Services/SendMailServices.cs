@@ -75,8 +75,8 @@ namespace AppMVC.Services
         public Task SendSmsAsync(string number, string message)
         {
             Directory.CreateDirectory("smssave");
-            var saveSMSFile = string.Format(@$"smssave/{number}, Code: {Guid.NewGuid()}");
-            File.WriteAllText(saveSMSFile, message);
+            var saveSMSFile = @$"smssave/{number}-{Guid.NewGuid()}.txt";
+            System.IO.File.WriteAllTextAsync(saveSMSFile, message);
             return Task.FromResult(0);
         }
 

@@ -17,7 +17,7 @@ using Microsoft.Extensions.Logging;
 namespace App.Areas.Identity.Controllers
 {
 
-    [Authorize(policy: "HighLevelManage")]
+    [Authorize]
     [Area("Identity")]
     [Route("/Member/[action]")]
     public class ManageController : Controller
@@ -260,6 +260,7 @@ namespace App.Areas.Identity.Controllers
             // Generate the token and send it
             var user = await GetCurrentUserAsync();
             var code = await _userManager.GenerateChangePhoneNumberTokenAsync(user, model.PhoneNumber);
+            _logger.LogInformation(code);
             await _emailSender.SendSmsAsync(model.PhoneNumber, "Mã xác thực là: " + code);
             return RedirectToAction(nameof(VerifyPhoneNumber), new { PhoneNumber = model.PhoneNumber });
         }

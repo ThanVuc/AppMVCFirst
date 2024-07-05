@@ -1,7 +1,9 @@
 ﻿@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Mvc.ViewEngines
 
 @inject SignInManager<AppUser> SignInManager
 @inject UserManager<AppUser> UserManager
+@inject ICompositeViewEngine Engine
 
 @if (SignInManager.IsSignedIn(User))
 {
@@ -14,6 +16,12 @@
             <input type="submit" class="btn btn-outline-primary item-size" value="Sign Out" />
         </div>
     </form>
+
+    @if (Engine.FindView(ViewContext, "_MenuManagePartial", false).Success)
+    {
+        @await Html.PartialAsync("_MenuManagePartial")
+    }
+
 }
 else
 {
