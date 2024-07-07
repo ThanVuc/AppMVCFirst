@@ -350,21 +350,6 @@ namespace App.Areas.Identity.Controllers
             return RedirectToAction("Edit", new {roleid = role.Id});
         }
 
-        [HttpGet]
-        public async Task<IActionResult> SeedOriginRole()
-        {
-            var listRole = typeof(RoleTemplate).GetProperties().ToList();
-            foreach (var role in listRole)
-            {
-                if (!await _roleManager.RoleExistsAsync(role.Name))
-                {
-                    await _roleManager.CreateAsync(new IdentityRole(role.Name));
-                }
-            }
-            StatusMessage = "Seed Role Success";
-            return LocalRedirect("/role/index");
-        }
-
 
     }
 }

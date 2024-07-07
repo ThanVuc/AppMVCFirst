@@ -5,6 +5,8 @@
 
 }
 
+<partial name="_StatusMessage" />
+
 <h2>Infomation</h2>
 <p>- Database: @Model.DbName</p>
 <p>- Can Connec: @Model.Can_connect</p>
@@ -37,5 +39,6 @@
     <form method="post" asp-action="MigrateDB">
         <input type="submit" class="btn btn-success" name="name" value="Create DB" />
     </form>
+    <a class="btn btn-primary ms-2" asp-action="SeedOriginData">Seed Data</a>
 </div>
 

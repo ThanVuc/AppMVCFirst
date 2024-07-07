@@ -32,13 +32,5 @@
         </tr>
     }
 </table>
-@{
-    var pagingmodel = new PagingModel()
-    {
-        currentpage = Model.currentPage,
-        countpages = Model.countPages,
-        generateUrl = (int? p) => Url.Action("Index", new { p = p})
-    };
-}
 
-<partial name="_PagingPartial" model="@pagingmodel" />
+<partial name="_PagingPartial" model="@ViewBag.PagingModel" />

@@ -10,32 +10,32 @@ namespace AppMVC.Models.Blog
         public int Id { get; set; }
 
         // Tiều đề Category
-        [Required(ErrorMessage = "Phải có tên danh mục")]
-        [StringLength(100, MinimumLength = 3, ErrorMessage = "{0} dài {1} đến {2}")]
-        [Display(Name = "Tên danh mục")]
+        [Required(ErrorMessage = "Require")]
+        [StringLength(100, MinimumLength = 3, ErrorMessage = "{0} size: {1} to {2}")]
+        [Display(Name = "Category Title")]
         public string Title { get; set; }
 
         // Nội dung, thông tin chi tiết về Category
         [DataType(DataType.Text)]
-        [Display(Name = "Nội dung danh mục")]
+        [Display(Name = "Content")]
         public string Content { set; get; }
 
         //chuỗi Url
-        [Required(ErrorMessage = "Phải tạo url")]
-        [StringLength(100, MinimumLength = 3, ErrorMessage = "{0} dài {1} đến {2}")]
-        [RegularExpression(@"^[a-z0-9-]*$", ErrorMessage = "Chỉ dùng các ký tự [a-z0-9-]")]
-        [Display(Name = "Url hiện thị")]
+        [Required(ErrorMessage = "Require Slug")]
+        [StringLength(100, MinimumLength = 3, ErrorMessage = "{0} size: {1} to {2}")]
+        [RegularExpression(@"^[a-z0-9-]*$", ErrorMessage = "Only char: [a-z0-9-]")]
+        [Display(Name = "Route Url")]
         public string Slug { set; get; }
 
         // Các Category con
         public ICollection<Category> CategoryChildren { get; set; }
 
         // Category cha (FKey)
-        [Display(Name = "Danh mục cha")]
+        [Display(Name = "Parent Category")]
         public int? ParentCategoryId { get; set; }
 
         [ForeignKey("ParentCategoryId")]
-        [Display(Name = "Danh mục cha")]
+        [Display(Name = "Parent Category")]
 
 
         public Category ParentCategory { set; get; }

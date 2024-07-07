@@ -55,29 +55,24 @@ namespace App.Areas.Identity.Controllers
         //
         // GET: /ManageUser/Index
         [HttpGet]
-        public async Task<IActionResult> Index([FromQuery(Name = "p")] int currentPage)
+        public async Task<IActionResult> Index([FromQuery(Name = "p")] int currentPage, int size)
         {
             var model = new UserListModel();
             model.currentPage = currentPage;
 
-            var qr = _userManager.Users.OrderBy(u => u.UserName);
+            // Take every user by UserAndRole Type
+            var qr = _userManager.Users
+                .Select(u => new UserAndRole(){
+                Id = u.Id,
+                UserName = u.UserName,
+            });
 
-            model.totalUsers = await qr.CountAsync();
-            model.countPages = (int)Math.Ceiling((double)model.totalUsers / model.ITEMS_PER_PAGE);
+            var totalItem = await qr.CountAsync();
 
-            if (model.currentPage < 1)
-                model.currentPage = 1;
-            if (model.currentPage > model.countPages)
-                model.currentPage = model.countPages;
+            PagingModel pagingModel = new PagingModel(currentPage,totalItem,size,Url.Action("Index"));
+            ViewBag.PagingModel = pagingModel;
 
-            var qr1 = qr.Skip((model.currentPage - 1) * model.ITEMS_PER_PAGE)
-                        .Take(model.ITEMS_PER_PAGE)
-                        .Select(u => new UserAndRole() {
-                            Id = u.Id,
-                            UserName = u.UserName,
-                        });
-
-            model.users = await qr1.ToListAsync();
+            model.users = pagingModel.TakePagingItem(qr.ToList());
 
             foreach (var user in model.users)
             {

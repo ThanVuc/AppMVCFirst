@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Bogus" Version="35.5.1" />
     <PackageReference Include="EntityFramework" Version="6.5.1" />
     <PackageReference Include="MailKit" Version="4.6.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" Version="8.0.6" />
@@ -47,7 +48,7 @@
 
   <ItemGroup>
     <Folder Include="Areas\Blog\Data\" />
-    <Folder Include="Areas\Blog\Models\" />
+    <Folder Include="Areas\Blog\Models\Posts\" />
     <Folder Include="Areas\ContactManage\Data\" />
     <Folder Include="Areas\ContactManage\Models\" />
     <Folder Include="Areas\DatabaseManage\Data\" />
@@ -57,7 +58,6 @@
     <Folder Include="Areas\Identity\Views\User\" />
     <Folder Include="Areas\Identity\Views\Role\" />
     <Folder Include="Areas\ProductManage\Data\" />
-    <Folder Include="smssave\" />
     <Folder Include="wwwroot\image\" />
   </ItemGroup>
 
