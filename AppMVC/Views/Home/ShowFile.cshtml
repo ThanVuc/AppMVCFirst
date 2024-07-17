@@ -1,0 +1,20 @@
+﻿@model FileStream
+
+<h1>Show File</h1>
+
+@if (Model != null)
+{
+    
+   
+}
+
+@{
+
+    if (Model != null)
+    {
+        var fileInfo = new FileInfo(Model.Name);
+        <p>@fileInfo.Name</p>
+        <p>@fileInfo.Length</p>
+        Model.Close();
+    }
+}

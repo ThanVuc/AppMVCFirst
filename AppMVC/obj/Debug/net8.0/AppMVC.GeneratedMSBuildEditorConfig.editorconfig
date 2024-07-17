@@ -114,6 +114,22 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGF0YWJhc2VNYW5hZ2VcVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Asp.Net/MVC/AppMVCFirst/AppMVC/Areas/Files/Views/Files/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRmlsZXNcVmlld3NcRmlsZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Asp.Net/MVC/AppMVCFirst/AppMVC/Areas/Files/Views/Shared/_LayoutFileManager.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRmlsZXNcVmlld3NcU2hhcmVkXF9MYXlvdXRGaWxlTWFuYWdlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Asp.Net/MVC/AppMVCFirst/AppMVC/Areas/Files/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRmlsZXNcVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Asp.Net/MVC/AppMVCFirst/AppMVC/Areas/Files/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRmlsZXNcVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Asp.Net/MVC/AppMVCFirst/AppMVC/Areas/Identity/Views/Account/AccessDenied.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcVmlld3NcQWNjb3VudFxBY2Nlc3NEZW5pZWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -294,6 +310,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Asp.Net/MVC/AppMVCFirst/AppMVC/Views/Home/ShowFile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTaG93RmlsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Asp.Net/MVC/AppMVCFirst/AppMVC/Views/Home/StatusErrors.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTdGF0dXNFcnJvcnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -324,6 +344,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Asp.Net/MVC/AppMVCFirst/AppMVC/Views/Shared/_StatusMessage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TdGF0dXNNZXNzYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Asp.Net/MVC/AppMVCFirst/AppMVC/Views/Shared/_Summernote.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TdW1tZXJub3RlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Asp.Net/MVC/AppMVCFirst/AppMVC/Views/Shared/_ValidationScriptsPartial.cshtml]

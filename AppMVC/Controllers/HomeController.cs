@@ -37,5 +37,40 @@ namespace AppMVC.Controllers
             return View(model: errName);
         }
 
+        [Route("showfile")]
+        public IActionResult ShowFile()
+        {
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Files", "pic.jpg");
+            //var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Files", fileName);
+            _logger.LogInformation(filePath);
+            if (System.IO.File.Exists(filePath))
+            {
+                var fileStream = new FileStream(filePath, FileMode.Open);
+                return View(model: fileStream);
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+        [Route("downloadfile")]
+        public IActionResult Downloadfile()
+        {
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Files", "abc.txt");
+            //var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Files", fileName);
+            var fileName = Path.GetFileName(filePath);
+            if (System.IO.File.Exists(filePath))
+            {
+                var file = System.IO.File.ReadAllBytes(filePath);
+                return File(file, "application/octet-stream", fileName);
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+
+
     }
 }

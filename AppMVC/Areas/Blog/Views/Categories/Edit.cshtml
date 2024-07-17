@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Edit";
+    var summernoteSetting = new SummernoteSetting("Content");
 }
 
 <h1>Edit</h1>
@@ -25,7 +26,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Content" class="control-label"></label>
-                <textarea asp-for="Content" class="form-control" rows="4"></textarea>
+                <textarea id="Content" asp-for="Content" class="form-control" rows="4"></textarea>
                 <span asp-validation-for="Content" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -47,4 +48,5 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <partial name="_Summernote" model="@summernoteSetting" />
 }

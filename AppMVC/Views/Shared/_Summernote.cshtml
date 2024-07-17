@@ -1,0 +1,29 @@
+﻿@model SummernoteSetting
+
+@if (Model.LoadLibraries)
+{
+    <link rel="stylesheet" href="~/lib/summernote/summernote-lite.min.css" />
+    <script src="~/lib/summernote/summernote-lite.min.js"></script>
+}
+
+<script>
+    $(document).ready(function () {
+        $('#@Model.TextAreaID').summernote({
+            placeholder: "",
+            height: 120,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture', 'video']],
+                ['view', ['fullscreen', 'codeview', 'help']]
+            ]
+        });
+    })
+
+
+</script>
+
+
