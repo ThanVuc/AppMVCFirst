@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ISmOqi2PlvnlAYOBOYfgdP6YK1+LhAcCnrnPE79TrGc=",
+  "Hash": "DaPDBDqOeoFqvVoZmjMUcQU46MUN7/+3tvSteJyeT10=",
   "Source": "AppMVC",
   "BasePath": "_content/AppMVC",
   "Mode": "Default",
@@ -1250,6 +1250,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "D:\\Asp.Net\\MVC\\AppMVCFirst\\AppMVC\\wwwroot\\css\\viewblog\\blog_layout.css",
+      "SourceId": "AppMVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Asp.Net\\MVC\\AppMVCFirst\\AppMVC\\wwwroot\\",
+      "BasePath": "_content/AppMVC",
+      "RelativePath": "css/viewblog/blog_layout.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\viewblog\\blog_layout.css"
     },
     {
       "Identity": "D:\\Asp.Net\\MVC\\AppMVCFirst\\AppMVC\\wwwroot\\favicon.ico",

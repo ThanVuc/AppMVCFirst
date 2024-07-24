@@ -35,8 +35,15 @@ body {
 }
 
 .Customer-Manage{
-    width: 20%;
+    width: auto ;
     display: flex;
     flex-direction: row;
     justify-content: end;
+}
+
+@media (max-width: 576px) {
+    .Customer-Manage {
+        justify-content: start;
+        margin-left: 5px;
+    }
 }

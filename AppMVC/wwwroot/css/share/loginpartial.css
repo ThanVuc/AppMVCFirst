@@ -1,26 +1,63 @@
 ﻿body {
 }
 
-.Login-Register{
+.log-if{
     display: flex;
     flex-direction: row;
+    width: auto;
+    height: auto;
 }
 
-.Login-Register .item-size{
+.log-if .item-size{
     margin-right: 10px;
-    width: 7vw;
+    width: auto;
+    height: auto;
 }
 
-.user-css{
+.user-css {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-.user-css .username {
-    padding-left: 5px;
-    text-decoration: none;
-    position: relative;
-    top: 12%;
-    width: auto;
+    .user-css .username {
+        padding-left: 5px;
+        text-decoration: none;
+        position: relative;
+        top: 12%;
+    }
+
+@media (max-width: 660px) and (min-width: 576px)  {
+    .log-if{
+        max-width: 300px;
+    }
+    
+    .user-css {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 37%;
+    }
+
+        .user-css .username {
+            padding-left: 5px;
+            text-decoration: none;
+            position: relative;
+            top: 12%;
+            width: 100%;
+            overflow: hidden;
+        }
+}
+
+@media (max-width: 575px) {
+    .log-if {
+        flex-direction: column;
+    }
+        .log-if .item-size {
+            margin-bottom: 5px;
+            outline: none;
+            border: none;
+            text-align: start;
+            text-decoration: underline;
+        }
 }

@@ -102,7 +102,7 @@ namespace AppMVC.Areas.DatabaseManage.Controllers
             int index = 1;
             fackCategory.RuleFor(c => c.Title, fk => $"Id {index++} " + fk.Lorem.Sentence(1, 2).Trim(','));
             fackCategory.RuleFor(c => c.Content, fk => fk.Lorem.Sentence(5).Trim(',') + " [FakeData]");
-            fackCategory.RuleFor(c => c.Slug, fk => $"Id {index++} " + fk.Lorem.Slug());
+            fackCategory.RuleFor(c => c.Slug, fk => $"id{index++}" + fk.Lorem.Slug());
 
             var cate1 = fackCategory.Generate();
             var cate11 = fackCategory.Generate();

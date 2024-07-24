@@ -52,6 +52,7 @@ namespace AppMVC.Models
             modelBuilder.Entity<PostCategory>(entity =>
             {
                 entity.HasKey(pc => new { pc.PostID, pc.CategoryID });
+                entity.HasIndex(pc => pc.CategoryID);
             });
         }
     }

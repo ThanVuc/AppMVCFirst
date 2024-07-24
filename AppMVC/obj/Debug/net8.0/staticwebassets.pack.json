@@ -17,6 +17,10 @@
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
+      "Id": "D:\\Asp.Net\\MVC\\AppMVCFirst\\AppMVC\\wwwroot\\css\\viewblog\\blog_layout.css",
+      "PackagePath": "staticwebassets\\css\\viewblog\\blog_layout.css"
+    },
+    {
       "Id": "D:\\Asp.Net\\MVC\\AppMVCFirst\\AppMVC\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },

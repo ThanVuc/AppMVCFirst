@@ -66,6 +66,22 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQmxvZ1xWaWV3c1xQb3N0c1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Asp.Net/MVC/AppMVCFirst/AppMVC/Areas/Blog/Views/ViewPost/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQmxvZ1xWaWV3c1xWaWV3UG9zdFxEZXRhaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Asp.Net/MVC/AppMVCFirst/AppMVC/Areas/Blog/Views/ViewPost/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQmxvZ1xWaWV3c1xWaWV3UG9zdFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Asp.Net/MVC/AppMVCFirst/AppMVC/Areas/Blog/Views/ViewPost/_BlogLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQmxvZ1xWaWV3c1xWaWV3UG9zdFxfQmxvZ0xheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Asp.Net/MVC/AppMVCFirst/AppMVC/Areas/Blog/Views/ViewPost/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQmxvZ1xWaWV3c1xWaWV3UG9zdFxfVmlld1N0YXJ0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Asp.Net/MVC/AppMVCFirst/AppMVC/Areas/Blog/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQmxvZ1xWaWV3c1xfVmlld0ltcG9ydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -324,6 +340,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Asp.Net/MVC/AppMVCFirst/AppMVC/Views/Planet/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxhbmV0XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Asp.Net/MVC/AppMVCFirst/AppMVC/Views/Shared/Components/CategorySideBar/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQ2F0ZWdvcnlTaWRlQmFyXERlZmF1bHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Asp.Net/MVC/AppMVCFirst/AppMVC/Views/Shared/Error.cshtml]

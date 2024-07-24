@@ -15,7 +15,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace AppMVC.Areas.Blog.Controllers
 {
     [Area("Blog")]
-    [Route("{controller}/{action=index}")]
+    [Route("posts/{action=index}")]
     [Authorize(policy: "HighLevelManage")]
     public class PostsController : Controller
     {

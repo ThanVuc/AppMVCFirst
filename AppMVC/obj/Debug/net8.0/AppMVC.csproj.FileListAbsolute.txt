@@ -590,3 +590,4 @@ D:\Asp.Net\MVC\AppMVCFirst\AppMVC\bin\Debug\net8.0\elFinder.Net.Core.dll
 D:\Asp.Net\MVC\AppMVCFirst\AppMVC\bin\Debug\net8.0\MimeTypes.dll
 D:\Asp.Net\MVC\AppMVCFirst\AppMVC\bin\Debug\net8.0\SixLabors.ImageSharp.dll
 D:\Asp.Net\MVC\AppMVCFirst\AppMVC\bin\Debug\net8.0\elFinder.NetCore.dll
+D:\Asp.Net\MVC\AppMVCFirst\AppMVC\bin\Debug\net8.0\Aspose.Imaging.dll
