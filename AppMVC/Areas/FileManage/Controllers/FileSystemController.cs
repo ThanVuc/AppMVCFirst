@@ -1,41 +1,32 @@
-﻿using elFinder.Net.Core;
-using Microsoft.AspNetCore.Authorization;
+﻿using elFinder.NetCore.Drivers.FileSystem;
+using elFinder.NetCore;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Hosting;
-using elFinder.NetCore.Drivers.FileSystem;
-using elFinder.NetCore;
-using Connector = elFinder.NetCore.Connector;
 
-
-namespace AppMVC.Areas.Files.Controllers
+namespace AppMVC.Areas.FileManage.Controllers
 {
-    [Area("Files")]
-    [Authorize(policy: "HighLevelManage")]
-    public class FilesController : Controller
+    [Area("FileManage")]
+    [Route("file-manager/{action=Index}")]
+    public class FileSystemController : Controller
     {
-        [Route("/files-manager")]
+        IWebHostEnvironment _env;
+
+        public FileSystemController(IWebHostEnvironment env)
+        {
+            _env = env;
+        }
+
         public IActionResult Index()
         {
             return View();
         }
 
-        IWebHostEnvironment _env;
-        public FilesController(IWebHostEnvironment env) => _env = env;
-
-        // Url để client-side kết nối đến backend
-        // /el-finder-file-system/connector
-        [Route("files-manager-connector")]
         public async Task<IActionResult> Connector()
         {
             var connector = GetConnector();
-
             return await connector.ProcessAsync(Request);
         }
 
-        // Địa chỉ để truy vấn thumbnail
-        // /el-finder-file-system/thumb
-        [Route("files-manager-thumb/{hash}")]
         public async Task<IActionResult> Thumbs(string hash)
         {
             var connector = GetConnector();
@@ -55,9 +46,9 @@ namespace AppMVC.Areas.Files.Controllers
             // .. ... wwww/files
             string rootDirectory = Path.Combine(_env.WebRootPath, pathroot);
 
-            // https://localhost:5001/files/
+            // http://localhost:5202/files/
             string url = $"{uri.Scheme}://{uri.Authority}/{pathroot}/";
-            string urlthumb = $"{uri.Scheme}://{uri.Authority}/el-finder-file-system/thumb/";
+            string urlthumb = $"{uri.Scheme}://{uri.Authority}/file-manager/thumb/";
 
 
             var root = new RootVolume(rootDirectory, url, urlthumb)
@@ -77,8 +68,10 @@ namespace AppMVC.Areas.Files.Controllers
             return new Connector(driver)
             {
                 // This allows support for the "onlyMimes" option on the client.
-                MimeDetect = elFinder.NetCore.MimeDetectOption.Internal
+                MimeDetect = MimeDetectOption.Internal
             };
         }
+
+
     }
 }

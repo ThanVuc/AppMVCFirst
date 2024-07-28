@@ -13,13 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="files\abc.txt" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Aspose.Imaging" Version="23.12.0" />
     <PackageReference Include="Bogus" Version="35.5.1" />
-    <PackageReference Include="elFinder.Net.Core" Version="1.5.0" />
     <PackageReference Include="elFinder.NetCore" Version="1.4.0" />
     <PackageReference Include="EntityFramework" Version="6.5.1" />
     <PackageReference Include="MailKit" Version="4.6.0" />
@@ -67,15 +62,14 @@
     <Folder Include="Areas\ContactManage\Models\" />
     <Folder Include="Areas\DatabaseManage\Data\" />
     <Folder Include="Areas\DatabaseManage\Models\" />
-    <Folder Include="Areas\Files\Controllers\" />
-    <Folder Include="Areas\Files\Data\" />
-    <Folder Include="Areas\Files\Models\" />
-    <Folder Include="Areas\Files\Views\" />
+    <Folder Include="Areas\FileManage\Data\" />
+    <Folder Include="Areas\FileManage\Models\" />
     <Folder Include="Areas\Identity\Views\Account\" />
     <Folder Include="Areas\Identity\Views\Manage\" />
     <Folder Include="Areas\Identity\Views\User\" />
     <Folder Include="Areas\Identity\Views\Role\" />
     <Folder Include="Areas\ProductManage\Data\" />
+    <Folder Include="wwwroot\files\" />
   </ItemGroup>
 
 </Project>

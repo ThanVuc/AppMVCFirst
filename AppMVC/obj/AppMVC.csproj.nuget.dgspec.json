@@ -138,10 +138,6 @@
               "target": "Package",
               "version": "[4.8.6, )"
             },
-            "elFinder.Net.Core": {
-              "target": "Package",
-              "version": "[1.5.0, )"
-            },
             "elFinder.NetCore": {
               "target": "Package",
               "version": "[1.4.0, )"

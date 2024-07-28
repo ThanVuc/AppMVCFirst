@@ -30,7 +30,6 @@
           "MimeKit": "4.6.0",
           "Newtonsoft.Json": "13.0.3",
           "System.Data.SqlClient": "4.8.6",
-          "elFinder.Net.Core": "1.5.0",
           "elFinder.NetCore": "1.4.0"
         },
         "runtime": {
@@ -96,22 +95,6 @@
           "lib/net6.0/BouncyCastle.Cryptography.dll": {
             "assemblyVersion": "2.0.0.0",
             "fileVersion": "2.3.1.17862"
-          }
-        }
-      },
-      "elFinder.Net.Core/1.5.0": {
-        "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0",
-          "Microsoft.Extensions.Options": "8.0.2",
-          "Microsoft.Extensions.Primitives": "8.0.0",
-          "Microsoft.Net.Http.Headers": "2.1.14",
-          "MimeTypeMapOfficial": "1.0.15",
-          "SixLabors.ImageSharp": "3.1.2"
-        },
-        "runtime": {
-          "lib/netstandard2.0/elFinder.Net.Core.dll": {
-            "assemblyVersion": "1.5.0.0",
-            "fileVersion": "1.5.0.0"
           }
         }
       },
@@ -1644,12 +1627,6 @@
           }
         }
       },
-      "Microsoft.Net.Http.Headers/2.1.14": {
-        "dependencies": {
-          "Microsoft.Extensions.Primitives": "8.0.0",
-          "System.Buffers": "4.5.0"
-        }
-      },
       "Microsoft.NET.StringTools/17.8.3": {
         "runtime": {
           "lib/net8.0/Microsoft.NET.StringTools.dll": {
@@ -1787,14 +1764,6 @@
           "lib/net8.0/MimeKit.dll": {
             "assemblyVersion": "4.6.0.0",
             "fileVersion": "4.6.0.0"
-          }
-        }
-      },
-      "MimeTypeMapOfficial/1.0.15": {
-        "runtime": {
-          "lib/netcoreapp3.1/MimeTypes.dll": {
-            "assemblyVersion": "2.3.2.0",
-            "fileVersion": "2.3.2.0"
           }
         }
       },
@@ -1959,7 +1928,6 @@
           }
         }
       },
-      "System.Buffers/4.5.0": {},
       "System.CodeDom/6.0.0": {
         "runtime": {
           "lib/net6.0/System.CodeDom.dll": {
@@ -2282,13 +2250,6 @@
       "sha512": "sha512-buwoISwecYke3CmgG1AQSg+sNZjJeIb93vTAtJiHZX35hP/teYMxsfg0NDXGUKjGx6BKBTNKc77O2M3vKvlXZQ==",
       "path": "bouncycastle.cryptography/2.3.1",
       "hashPath": "bouncycastle.cryptography.2.3.1.nupkg.sha512"
-    },
-    "elFinder.Net.Core/1.5.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-+Wwc5vgY/lrYTKs8sOx+oUY9Gtlu4OTucO6c0Vzht9kRk0P7yQyIv1BXabV2hEmRI5gpYxdZt6BrFJjiAydLzQ==",
-      "path": "elfinder.net.core/1.5.0",
-      "hashPath": "elfinder.net.core.1.5.0.nupkg.sha512"
     },
     "elFinder.NetCore/1.4.0": {
       "type": "package",
@@ -3109,13 +3070,6 @@
       "path": "microsoft.identitymodel.tokens/7.1.2",
       "hashPath": "microsoft.identitymodel.tokens.7.1.2.nupkg.sha512"
     },
-    "Microsoft.Net.Http.Headers/2.1.14": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-+45BYzxrBr0Pqc9B/9EhX/KvlGqe0PrB+WgJW8ZrGmoyIMMs8aObPfgZbALpjN0VOq1/WYy1y5RcEOw53MRuMg==",
-      "path": "microsoft.net.http.headers/2.1.14",
-      "hashPath": "microsoft.net.http.headers.2.1.14.nupkg.sha512"
-    },
     "Microsoft.NET.StringTools/17.8.3": {
       "type": "package",
       "serviceable": true,
@@ -3206,13 +3160,6 @@
       "sha512": "sha512-M4jddPQNSClTzHE+HnfrtN93mCXSYF8KewWUTwzXgl49ajzUh8hz/UY4CAnRQR4YJF3lBY5P+r+73VXZAGKafw==",
       "path": "mimekit/4.6.0",
       "hashPath": "mimekit.4.6.0.nupkg.sha512"
-    },
-    "MimeTypeMapOfficial/1.0.15": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-liVmtHeNjH00ECRyx9mFDw5FCu5PoGnSFiR0k4ub5vBTyfd6UgJaRbDQP6GNHX7v2Ii1nrYePMCW8pM1X2KHBA==",
-      "path": "mimetypemapofficial/1.0.15",
-      "hashPath": "mimetypemapofficial.1.0.15.nupkg.sha512"
     },
     "Mono.TextTemplating/2.3.1": {
       "type": "package",
@@ -3325,13 +3272,6 @@
       "sha512": "sha512-PYdR6GUI+gW6LBaAQKTik0Ai8oLpFAz3a/KrVusxoTg3kf7F3cuIqKMhJGsuQcmDHCF+iD81Pyn4cexyHrb1ZA==",
       "path": "sixlabors.imagesharp/3.1.2",
       "hashPath": "sixlabors.imagesharp.3.1.2.nupkg.sha512"
-    },
-    "System.Buffers/4.5.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-pL2ChpaRRWI/p4LXyy4RgeWlYF2sgfj/pnVMvBqwNFr5cXg7CXNnWZWxrOONLg8VGdFB8oB+EG2Qw4MLgTOe+A==",
-      "path": "system.buffers/4.5.0",
-      "hashPath": "system.buffers.4.5.0.nupkg.sha512"
     },
     "System.CodeDom/6.0.0": {
       "type": "package",

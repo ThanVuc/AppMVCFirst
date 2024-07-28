@@ -89,23 +89,6 @@
           }
         }
       },
-      "elFinder.Net.Core/1.5.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.1.1",
-          "Microsoft.Extensions.Options": "2.1.1",
-          "Microsoft.Extensions.Primitives": "2.1.6",
-          "Microsoft.Net.Http.Headers": "2.1.14",
-          "MimeTypeMapOfficial": "1.0.15",
-          "SixLabors.ImageSharp": "2.0.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/elFinder.Net.Core.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/elFinder.Net.Core.dll": {}
-        }
-      },
       "elFinder.NetCore/1.4.0": {
         "type": "package",
         "dependencies": {
@@ -2188,23 +2171,6 @@
           }
         }
       },
-      "Microsoft.Net.Http.Headers/2.1.14": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.Primitives": "2.1.1",
-          "System.Buffers": "4.5.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/Microsoft.Net.Http.Headers.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard2.0/Microsoft.Net.Http.Headers.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "Microsoft.NET.StringTools/17.8.3": {
         "type": "package",
         "compile": {
@@ -2430,15 +2396,6 @@
           }
         }
       },
-      "MimeTypeMapOfficial/1.0.15": {
-        "type": "package",
-        "compile": {
-          "lib/netcoreapp3.1/MimeTypes.dll": {}
-        },
-        "runtime": {
-          "lib/netcoreapp3.1/MimeTypes.dll": {}
-        }
-      },
       "Mono.TextTemplating/2.3.1": {
         "type": "package",
         "dependencies": {
@@ -2622,15 +2579,6 @@
         },
         "build": {
           "build/_._": {}
-        }
-      },
-      "System.Buffers/4.5.0": {
-        "type": "package",
-        "compile": {
-          "ref/netcoreapp2.0/_._": {}
-        },
-        "runtime": {
-          "lib/netcoreapp2.0/_._": {}
         }
       },
       "System.CodeDom/6.0.0": {
@@ -3473,19 +3421,6 @@
         "lib/netstandard2.0/BouncyCastle.Cryptography.dll",
         "lib/netstandard2.0/BouncyCastle.Cryptography.xml",
         "packageIcon.png"
-      ]
-    },
-    "elFinder.Net.Core/1.5.0": {
-      "sha512": "+Wwc5vgY/lrYTKs8sOx+oUY9Gtlu4OTucO6c0Vzht9kRk0P7yQyIv1BXabV2hEmRI5gpYxdZt6BrFJjiAydLzQ==",
-      "type": "package",
-      "path": "elfinder.net.core/1.5.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "elfinder.net.core.1.5.0.nupkg.sha512",
-        "elfinder.net.core.nuspec",
-        "lib/netstandard2.0/elFinder.Net.Core.dll",
-        "logo.png"
       ]
     },
     "elFinder.NetCore/1.4.0": {
@@ -6869,19 +6804,6 @@
         "microsoft.identitymodel.tokens.nuspec"
       ]
     },
-    "Microsoft.Net.Http.Headers/2.1.14": {
-      "sha512": "+45BYzxrBr0Pqc9B/9EhX/KvlGqe0PrB+WgJW8ZrGmoyIMMs8aObPfgZbALpjN0VOq1/WYy1y5RcEOw53MRuMg==",
-      "type": "package",
-      "path": "microsoft.net.http.headers/2.1.14",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/netstandard2.0/Microsoft.Net.Http.Headers.dll",
-        "lib/netstandard2.0/Microsoft.Net.Http.Headers.xml",
-        "microsoft.net.http.headers.2.1.14.nupkg.sha512",
-        "microsoft.net.http.headers.nuspec"
-      ]
-    },
     "Microsoft.NET.StringTools/17.8.3": {
       "sha512": "y6DiuacjlIfXH3XVQG5htf+4oheinZAo7sHbITB3z7yCXQec48f9ZhGSXkr+xn1bfl73Yc3ZQEW2peJ5X68AvQ==",
       "type": "package",
@@ -7684,22 +7606,6 @@
         "mimekit.nuspec"
       ]
     },
-    "MimeTypeMapOfficial/1.0.15": {
-      "sha512": "liVmtHeNjH00ECRyx9mFDw5FCu5PoGnSFiR0k4ub5vBTyfd6UgJaRbDQP6GNHX7v2Ii1nrYePMCW8pM1X2KHBA==",
-      "type": "package",
-      "path": "mimetypemapofficial/1.0.15",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net452/MimeTypes.dll",
-        "lib/net48/MimeTypes.dll",
-        "lib/netcoreapp2.2/MimeTypes.dll",
-        "lib/netcoreapp3.1/MimeTypes.dll",
-        "lib/netstandard2.0/MimeTypes.dll",
-        "mimetypemapofficial.1.0.15.nupkg.sha512",
-        "mimetypemapofficial.nuspec"
-      ]
-    },
     "Mono.TextTemplating/2.3.1": {
       "sha512": "pqYwzNqDL0QK1JFpAjpI/NPqyqLGpHLvVmA5Ec0LaSnbIDtEXxu0td16uunegb7c8xAnlcm4qkbIYUP5FfrFpA==",
       "type": "package",
@@ -7962,35 +7868,6 @@
         "sixlabors.imagesharp.128.png",
         "sixlabors.imagesharp.3.1.2.nupkg.sha512",
         "sixlabors.imagesharp.nuspec"
-      ]
-    },
-    "System.Buffers/4.5.0": {
-      "sha512": "pL2ChpaRRWI/p4LXyy4RgeWlYF2sgfj/pnVMvBqwNFr5cXg7CXNnWZWxrOONLg8VGdFB8oB+EG2Qw4MLgTOe+A==",
-      "type": "package",
-      "path": "system.buffers/4.5.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/netcoreapp2.0/_._",
-        "lib/netstandard1.1/System.Buffers.dll",
-        "lib/netstandard1.1/System.Buffers.xml",
-        "lib/netstandard2.0/System.Buffers.dll",
-        "lib/netstandard2.0/System.Buffers.xml",
-        "lib/uap10.0.16299/_._",
-        "ref/net45/System.Buffers.dll",
-        "ref/net45/System.Buffers.xml",
-        "ref/netcoreapp2.0/_._",
-        "ref/netstandard1.1/System.Buffers.dll",
-        "ref/netstandard1.1/System.Buffers.xml",
-        "ref/netstandard2.0/System.Buffers.dll",
-        "ref/netstandard2.0/System.Buffers.xml",
-        "ref/uap10.0.16299/_._",
-        "system.buffers.4.5.0.nupkg.sha512",
-        "system.buffers.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
       ]
     },
     "System.CodeDom/6.0.0": {
@@ -9419,7 +9296,6 @@
       "MimeKit >= 4.6.0",
       "Newtonsoft.Json >= 13.0.3",
       "System.Data.SqlClient >= 4.8.6",
-      "elFinder.Net.Core >= 1.5.0",
       "elFinder.NetCore >= 1.4.0"
     ]
   },
@@ -9559,10 +9435,6 @@
           "System.Data.SqlClient": {
             "target": "Package",
             "version": "[4.8.6, )"
-          },
-          "elFinder.Net.Core": {
-            "target": "Package",
-            "version": "[1.5.0, )"
           },
           "elFinder.NetCore": {
             "target": "Package",

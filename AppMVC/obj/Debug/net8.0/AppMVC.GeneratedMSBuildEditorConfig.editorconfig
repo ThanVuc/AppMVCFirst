@@ -130,20 +130,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGF0YWJhc2VNYW5hZ2VcVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Asp.Net/MVC/AppMVCFirst/AppMVC/Areas/Files/Views/Files/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRmlsZXNcVmlld3NcRmlsZXNcSW5kZXguY3NodG1s
+[D:/Asp.Net/MVC/AppMVCFirst/AppMVC/Areas/FileManage/Views/FileSystem/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRmlsZU1hbmFnZVxWaWV3c1xGaWxlU3lzdGVtXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Asp.Net/MVC/AppMVCFirst/AppMVC/Areas/Files/Views/Shared/_LayoutFileManager.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRmlsZXNcVmlld3NcU2hhcmVkXF9MYXlvdXRGaWxlTWFuYWdlci5jc2h0bWw=
+[D:/Asp.Net/MVC/AppMVCFirst/AppMVC/Areas/FileManage/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRmlsZU1hbmFnZVxWaWV3c1xfVmlld0ltcG9ydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Asp.Net/MVC/AppMVCFirst/AppMVC/Areas/Files/Views/_ViewImports.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRmlsZXNcVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Asp.Net/MVC/AppMVCFirst/AppMVC/Areas/Files/Views/_ViewStart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRmlsZXNcVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+[D:/Asp.Net/MVC/AppMVCFirst/AppMVC/Areas/FileManage/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRmlsZU1hbmFnZVxWaWV3c1xfVmlld1N0YXJ0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Asp.Net/MVC/AppMVCFirst/AppMVC/Areas/Identity/Views/Account/AccessDenied.cshtml]
