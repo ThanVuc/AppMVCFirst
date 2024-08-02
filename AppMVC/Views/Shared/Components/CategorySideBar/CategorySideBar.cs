@@ -1,14 +1,19 @@
-﻿using AppMVC.Models.Blog;
+﻿using AppMVC.Models.Abstract;
+using AppMVC.Models.Blog;
+using AppMVC.Models.Product;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AppMVC.Views.Shared.Component.CategorySideBar
 {
-    public class CategorySideBarData
+    public abstract class SideBarData
     {
-        public List<Category> Categories { get; set; }
         public int level { get; set; }
         public string slug { get; set; }
-
+    }
+     
+    public class CategorySideBarData : SideBarData
+    {
+        public List<Category> Categories { get; set; }
     }
 
     [ViewComponent]

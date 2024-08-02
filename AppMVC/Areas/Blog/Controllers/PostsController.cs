@@ -48,7 +48,6 @@ namespace AppMVC.Areas.Blog.Controllers
                 .Include(p => p.Author)
                 .Include(p => p.PostCategories)
                 .ThenInclude(pc => pc.Category)
-                .OrderByDescending(p => p.DateCreated)
                 .ToListAsync();
 
             post = pagingModel.TakePagingItem(post);

@@ -29,7 +29,6 @@ services.AddDbContext<AppDBContext>(options =>
 
 services.AddControllersWithViews();
 services.AddRazorPages();
-services.AddSingleton<ProductServices,ProductServices>();
 services.AddSingleton<PlanetServices, PlanetServices>();
 
 //Route config

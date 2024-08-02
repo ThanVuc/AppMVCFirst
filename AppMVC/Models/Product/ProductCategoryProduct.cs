@@ -1,6 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using AppMVC.Models.Product;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace AppMVC.Models.Blog
+namespace AppMVC.Models.Product
 {
     public class ProductCategoryProduct
     {
@@ -9,9 +10,9 @@ namespace AppMVC.Models.Blog
         public int CategoryID { set; get; }
 
         [ForeignKey("ProductID")]
-        public Post Post { set; get; }
+        public ProductModel Product { set; get; }
 
         [ForeignKey("CategoryID")]
-        public Category Category { set; get; }
+        public CategoryProduct CategoryProduct { set; get; }
     }
 }

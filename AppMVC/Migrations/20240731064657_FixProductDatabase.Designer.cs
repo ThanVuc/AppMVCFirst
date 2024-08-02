@@ -4,6 +4,7 @@ using AppMVC.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AppMVC.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    partial class AppDBContextModelSnapshot : ModelSnapshot
+    [Migration("20240731064657_FixProductDatabase")]
+    partial class FixProductDatabase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -128,6 +131,40 @@ namespace AppMVC.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("AppMVC.Models.Blog.CategoryProduct", b =>
+                {
+                    b.Property<int>("CategoryId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoryId"));
+
+                    b.Property<string>("Content")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ParentCategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Slug")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("CategoryId");
+
+                    b.HasIndex("ParentCategoryId");
+
+                    b.HasIndex("Slug")
+                        .IsUnique();
+
+                    b.ToTable("CategoryProducts");
+                });
+
             modelBuilder.Entity("AppMVC.Models.Blog.Post", b =>
                 {
                     b.Property<int>("PostId")
@@ -190,6 +227,21 @@ namespace AppMVC.Migrations
                     b.ToTable("PostCategories");
                 });
 
+            modelBuilder.Entity("AppMVC.Models.Blog.ProductCategoryProduct", b =>
+                {
+                    b.Property<int>("ProductID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CategoryID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProductID", "CategoryID");
+
+                    b.HasIndex("CategoryID");
+
+                    b.ToTable("ProductCategoryProducts");
+                });
+
             modelBuilder.Entity("AppMVC.Models.Contact.ContactModel", b =>
                 {
                     b.Property<int>("ContaxtID")
@@ -218,55 +270,6 @@ namespace AppMVC.Migrations
                     b.HasKey("ContaxtID");
 
                     b.ToTable("Contacts");
-                });
-
-            modelBuilder.Entity("AppMVC.Models.Product.CategoryProduct", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Content")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("ParentCategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Slug")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ParentCategoryId");
-
-                    b.HasIndex("Slug")
-                        .IsUnique();
-
-                    b.ToTable("CategoryProducts");
-                });
-
-            modelBuilder.Entity("AppMVC.Models.Product.ProductCategoryProduct", b =>
-                {
-                    b.Property<int>("ProductID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CategoryID")
-                        .HasColumnType("int");
-
-                    b.HasKey("ProductID", "CategoryID");
-
-                    b.HasIndex("CategoryID");
-
-                    b.ToTable("ProductCategoryProducts");
                 });
 
             modelBuilder.Entity("AppMVC.Models.Product.ProductModel", b =>
@@ -458,6 +461,15 @@ namespace AppMVC.Migrations
                     b.Navigation("ParentCategory");
                 });
 
+            modelBuilder.Entity("AppMVC.Models.Blog.CategoryProduct", b =>
+                {
+                    b.HasOne("AppMVC.Models.Blog.CategoryProduct", "ParentCategory")
+                        .WithMany("CategoryChildren")
+                        .HasForeignKey("ParentCategoryId");
+
+                    b.Navigation("ParentCategory");
+                });
+
             modelBuilder.Entity("AppMVC.Models.Blog.Post", b =>
                 {
                     b.HasOne("AppMVC.Models.AppUser", "Author")
@@ -488,18 +500,9 @@ namespace AppMVC.Migrations
                     b.Navigation("Post");
                 });
 
-            modelBuilder.Entity("AppMVC.Models.Product.CategoryProduct", b =>
+            modelBuilder.Entity("AppMVC.Models.Blog.ProductCategoryProduct", b =>
                 {
-                    b.HasOne("AppMVC.Models.Product.CategoryProduct", "ParentCategory")
-                        .WithMany("CategoryChildren")
-                        .HasForeignKey("ParentCategoryId");
-
-                    b.Navigation("ParentCategory");
-                });
-
-            modelBuilder.Entity("AppMVC.Models.Product.ProductCategoryProduct", b =>
-                {
-                    b.HasOne("AppMVC.Models.Product.CategoryProduct", "CategoryProduct")
+                    b.HasOne("AppMVC.Models.Blog.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -511,7 +514,7 @@ namespace AppMVC.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("CategoryProduct");
+                    b.Navigation("Category");
 
                     b.Navigation("Product");
                 });
@@ -583,14 +586,14 @@ namespace AppMVC.Migrations
                     b.Navigation("CategoryChildren");
                 });
 
+            modelBuilder.Entity("AppMVC.Models.Blog.CategoryProduct", b =>
+                {
+                    b.Navigation("CategoryChildren");
+                });
+
             modelBuilder.Entity("AppMVC.Models.Blog.Post", b =>
                 {
                     b.Navigation("PostCategories");
-                });
-
-            modelBuilder.Entity("AppMVC.Models.Product.CategoryProduct", b =>
-                {
-                    b.Navigation("CategoryChildren");
                 });
 
             modelBuilder.Entity("AppMVC.Models.Product.ProductModel", b =>

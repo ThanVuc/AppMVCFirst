@@ -1,12 +1,14 @@
 ﻿using AppMVC.Areas.Identity.Data;
 using AppMVC.Models;
 using AppMVC.Models.Blog;
+using AppMVC.Models.Product;
 using Bogus;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Shared;
+using System.Data.Entity;
 
 namespace AppMVC.Areas.DatabaseManage.Controllers
 {
@@ -88,6 +90,7 @@ namespace AppMVC.Areas.DatabaseManage.Controllers
 
             //seed data
             SeedPostCategory();
+            SeedProduct();
 
             StatusMessage = "Seed Data Success";
             return RedirectToAction("index");
@@ -158,6 +161,81 @@ namespace AppMVC.Areas.DatabaseManage.Controllers
 
             _context.SaveChanges();
 
+        }
+
+        private void SeedProduct()
+        {
+            // Generate Category
+            _context.CategoryProducts.RemoveRange(_context.CategoryProducts.Where(c => c.Content.Contains("[FakeData]")));
+
+            var fackCategoryProduct = new Faker<CategoryProduct>();
+            int index = 1;
+            fackCategoryProduct.RuleFor(c => c.Title, fk => $"Category {index++} " + fk.Lorem.Sentence(1, 2).Trim(','));
+            fackCategoryProduct.RuleFor(c => c.Content, fk => fk.Lorem.Sentence(5).Trim(',') + " [FakeData]");
+            fackCategoryProduct.RuleFor(c => c.Slug, fk => $"category{index++}" + fk.Lorem.Slug());
+
+            var cate1 = fackCategoryProduct.Generate();
+            var cate11 = fackCategoryProduct.Generate();
+            var cate12 = fackCategoryProduct.Generate();
+            var cate2 = fackCategoryProduct.Generate();
+            var cate21 = fackCategoryProduct.Generate();
+            var cate211 = fackCategoryProduct.Generate();
+
+            cate11.ParentCategory = cate1;
+            cate12.ParentCategory = cate1;
+            cate21.ParentCategory = cate2;
+            cate211.ParentCategory = cate21;
+
+            var categories = new CategoryProduct[] { cate1, cate11, cate12, cate2, cate21, cate211 };
+            _context.AddRange(categories);
+            _context.SaveChanges();
+
+            // Generate Product + ProductCategoryProduct
+            _context.Products.RemoveRange(_context.Products.Where(c => c.Content.Contains("[FakeData]")));
+
+            var rCateIndex = new Random();
+            int postNumber = 1;
+
+            var user = _userManager.GetUserAsync(User).Result;
+            var fakePost = new Faker<ProductModel>();
+
+            // Rule when generate
+            fakePost.RuleFor(p => p.AuthorId, fakePost => user.Id);
+            fakePost.RuleFor(p => p.Content, fakePost => fakePost.Lorem.Paragraph(7) + " [FakeData]");
+            fakePost.RuleFor(p => p.DateCreated, fakePost => fakePost.Date.Between(new DateTime(2011, 1, 1), new DateTime(2024, 7, 1)));
+            fakePost.RuleFor(p => p.Description, fakePost => fakePost.Lorem.Sentences(3));
+            fakePost.RuleFor(p => p.Published, fakePost => true);
+            fakePost.RuleFor(p => p.Slug, fakePost => fakePost.Lorem.Slug());
+            fakePost.RuleFor(p => p.Title, fakePost => $"Product {postNumber++} " + fakePost.Lorem.Sentence(3, 4).Trim('.'));
+
+            var products = new List<ProductModel>();
+            // Product category Product
+            var pcp = new List<ProductCategoryProduct>();
+
+            for (int i = 1; i <= 40; i++)
+            {
+                var product = fakePost.Generate();
+                product.DateUpdated = product.DateCreated;
+                products.Add(product);
+                pcp.Add(new ProductCategoryProduct()
+                {
+
+                    Product = product,
+                    CategoryProduct = categories[rCateIndex.Next(5)]
+                });
+            }
+
+            _context.AddRange(products);
+            _context.AddRange(pcp);
+
+            _context.SaveChanges();
+        }
+
+        // Fix Seed data -- Delete Bug 
+        // Problem: Delete Top - Bottem lead to Contraints Exception
+        // Delete Top can't handle Data constraints
+        private void DeleteSelfReferences()
+        {
         }
 
     }
