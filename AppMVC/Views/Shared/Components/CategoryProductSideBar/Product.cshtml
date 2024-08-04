@@ -1,7 +1,6 @@
 ﻿@using AppMVC.Models.Blog
 @using AppMVC.Models.Product
-@using AppMVC.Views.Shared.Component.CategorySideBar
-@using static AppMVC.Views.Shared.Component.CategorySideBar.CategoryProductSideBar
+@using AppMVC.Views.Shared.Component.CategoryProductSideBar
 
 @model CategoryProductSideBarData
 
@@ -19,7 +18,7 @@
                 <a class="@activeCss @noParent" asp-area="ProductManage" asp-controller="ViewProduct" asp-action="Index" asp-route-categoryslug="@category.Slug" >@category.Title</a>
                 @if (category.CategoryChildren?.Count > 0)
                 {
-                    @await Component.InvokeAsync("AppMVC.Views.Shared.Component.CategorySideBar.CategoryProductSideBar",
+                    @await Component.InvokeAsync("AppMVC.Views.Shared.Component.CategoryProductSideBar.CategoryProductSideBar",
                              new CategoryProductSideBarData()
                             {
                                 level = level+1,

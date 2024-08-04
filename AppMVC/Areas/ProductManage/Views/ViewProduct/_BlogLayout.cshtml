@@ -1,6 +1,7 @@
-﻿@using AppMVC.Views.Shared.Component.CategorySideBar
+﻿@using AppMVC.Views.Shared.Component.CategoryProductSideBar
+@using AppMVC.Views.Shared.Component.CategorySideBar
 @using Microsoft.EntityFrameworkCore
-@using static AppMVC.Views.Shared.Component.CategorySideBar.CategoryProductSideBar
+
 @inject AppDBContext _context;
 @{
     Layout = "_Layout";
@@ -19,9 +20,9 @@
     <div class="row">
         <div class="col-md-3 sidebar">
             <h3 class="text-center title" >
-                <a class="cate-index" asp-controller="ViewPost" asp-route-categoryslug="" asp-action="Index">Index Of Category</a>
+                <a class="cate-index" asp-controller="ViewProduct" asp-route-categoryslug="" asp-action="Index">Index Of Category</a>
             </h3>
-            @await Component.InvokeAsync("AppMVC.Views.Shared.Component.CategorySideBar.CategoryProductSideBar",
+            @await Component.InvokeAsync("AppMVC.Views.Shared.Component.CategoryProductSideBar.CategoryProductSideBar",
                      new CategoryProductSideBarData()
             {
                 level = 0,

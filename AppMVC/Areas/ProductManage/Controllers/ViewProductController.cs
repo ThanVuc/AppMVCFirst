@@ -68,9 +68,11 @@ namespace AppMVC.Areas.Blog.Controllers
             totalProduct = products.Count();
             pagingModel = new(currentPage, totalProduct, size, Url.Action("Index"));
             ViewBag.PagingModel = pagingModel;
+            products.OrderByDescending(p => p.DateUpdated);
 
             //take paging item
             List<ProductModel> listProducts = pagingModel.TakePagingItem(products.ToList());
+
 
             return View(model: listProducts);
         }
@@ -78,8 +80,8 @@ namespace AppMVC.Areas.Blog.Controllers
         
 
 
-        [Route("/post/{postslug}.html")]
-        public async Task<IActionResult> Detail([FromRoute(Name = "postslug")] string slug)
+        [Route("/product/{productslug}.html")]
+        public async Task<IActionResult> Detail([FromRoute(Name = "productslug")] string slug)
         {
             if (slug == null)
             {
@@ -88,21 +90,21 @@ namespace AppMVC.Areas.Blog.Controllers
 
             ViewBag.categories = getCategories();
 
-            var post = await _context.Posts
+            var product = await _context.Products
                 .Include(p => p.Author)
-                .Include(p => p.PostCategories)
-                .ThenInclude(p => p.Category)
+                .Include(p => p.ProductCategoryProducts)
+                .ThenInclude(p => p.CategoryProduct)
                 .FirstOrDefaultAsync(p => p.Slug == slug);
 
-            ViewBag.category = post.PostCategories.FirstOrDefault()?.Category;
+            ViewBag.category = product.ProductCategoryProducts.FirstOrDefault()?.CategoryProduct;
 
 
-            if (post == null)
+            if (product == null)
             {
                 return Content($"Not found a Post have slug: {slug}");
             }
 
-            return View(post);
+            return View(product);
         }
 
         public List<CategoryProduct> getCategories()

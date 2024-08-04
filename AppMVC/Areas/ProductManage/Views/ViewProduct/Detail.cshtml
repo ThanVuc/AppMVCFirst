@@ -1,9 +1,9 @@
 ﻿@using AppMVC.Views.Shared.Component.CategorySideBar
-@model Post
+@model ProductModel
 
 @{
-    var listCategory = ViewBag.categories as List<Category>;
-    var category = ViewBag.category as Category;
+    var listCategory = ViewBag.categories as List<CategoryProduct>;
+    var category = ViewBag.category as CategoryProduct;
     string authorName = Model.Author == null ? "Admin" : Model.Author.Email;
 }
 
@@ -29,14 +29,13 @@
         <info>
             <p>Author: <strong>@authorName</strong> | Update: @Model.DateUpdated.ToString("d")</p>
             
-            @if (Model.PostCategories.Count > 0)
+            @if (Model.ProductCategoryProducts.Count > 0)
             {
                 <p>Categories: </p>
 
-                @foreach (var cate in Model.PostCategories)
+                @foreach (var productCategory in Model.ProductCategoryProducts)
                 {
-
-                    <p>@cate.Category.Title</p>
+                    <p>@productCategory.CategoryProduct.Title</p>
                 }
             }
             
