@@ -31,13 +31,6 @@ namespace AppMVC.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        [Route("StatusErrors")]
-        public IActionResult StatusErrors(int code)
-        {
-            var errName = (HttpStatusCode)code;
-            return View(model: errName);
-        }
-
         [Route("showfile")]
         public IActionResult ShowFile()
         {

@@ -5,7 +5,6 @@
 @inject UserManager<AppUser> _userManager
 @inject IAuthorizationService _authorizationService
 
-
 @if (_signInManager.IsSignedIn(User) && (await _authorizationService.AuthorizeAsync(User, "HighLevelManage")).Succeeded)
 {
     <div class="dropdown">
@@ -16,12 +15,12 @@
             <li><a class="dropdown-item" href="/Database">Database</a></li>
             <li><a class="dropdown-item" href="/Contact">Contact</a></li>
             <li><a class="dropdown-item" href="/Role/Index">Role</a></li>
-            <li><a class="dropdown-item" href="/ManageUser/Index">UserManage</a></li>
+            <li><a class="dropdown-item" href="/ManageUser/Index">User Manage</a></li>
             <li><a class="dropdown-item" href="/Categories">Categories</a></li>
             <li><a class="dropdown-item" href="/posts">Posts</a></li>
+            <li><a class="dropdown-item" href="/product/categories">Categories Product</a></li>
+            <li><a class="dropdown-item" href="/product/manager">Products</a></li>
             <li><a class="dropdown-item" href="/file-manager">File Manager</a></li>
         </ul>
     </div>
 }
-
-

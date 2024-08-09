@@ -69,7 +69,6 @@
     <Folder Include="Areas\Identity\Views\User\" />
     <Folder Include="Areas\Identity\Views\Role\" />
     <Folder Include="Areas\ProductManage\Data\" />
-    <Folder Include="Areas\ProductManage\Models\" />
     <Folder Include="wwwroot\files\" />
   </ItemGroup>
 

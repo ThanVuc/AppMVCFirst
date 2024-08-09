@@ -43,5 +43,7 @@ namespace AppMVC.Models.Product
         [Display(Name = "Updated Date")]
         public DateTime DateUpdated { set; get; }
 
+        public List<ProductImage> ProductImages { get; set; }
+
     }
 }

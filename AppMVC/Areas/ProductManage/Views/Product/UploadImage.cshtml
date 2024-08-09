@@ -1,0 +1,38 @@
+﻿@using AppMVC.Areas.ProductManage.Models
+@using AppMVC.Models.Product
+@model UploadFile
+
+@{
+    ProductModel product = ViewData["product"] as ProductModel;
+}
+
+@section head{
+    <link rel="stylesheet" href="~/css/Product/UploadProductImage.css" />
+}
+
+
+<h2>Product: @product.Title</h2>
+
+<form method="post" enctype="multipart/form-data" >
+    <label asp-for="UploadImage"></label>
+    <input asp-for="UploadImage" />
+    <span asp-validation-for="@Model.UploadImage"></span>
+    <br />
+    <button class="btn btn-primary" asp-action="UploadImage" asp-route-id="@product.ProductId" >Uploads</button>
+</form>
+
+<div id="box-image-upload" class="d-flex flex-wrap image-upload" data-id="@product.ProductId" >
+@*
+    @foreach(var img in product.ProductImages)
+    {
+        <div class="product-image p-1">
+            <img class="w-100" src="/image/product/@img.FileName" alt="Err" />
+            <button class="btn btn-danger delete-image" data-id="@img.Id" >Delete</button>
+        </div>
+    }
+*@
+</div>
+
+@section Scripts {
+    
+}

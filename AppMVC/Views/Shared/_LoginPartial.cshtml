@@ -9,19 +9,17 @@
 {
     <form asp-area="Identity" asp-controller="Account" asp-action="LogOff" method="post" id="logoutForm" class="navbar-right">
         <div class="log-if">
-            <a href="/member/index" class="user-css">
-                <i class="fa-solid fa-user"></i>
-                <p class="item-size username">@(await UserManager.GetUserAsync(User))</p>
-            </a>
-            <input type="submit" class="btn btn-outline-primary item-size logout" value="Sign Out" />
-            <div class="item-size" >
+            <div class="item-size">
                 @if (Engine.FindView(ViewContext, "_MenuManagePartial", false).Success)
                 {
                     @await Html.PartialAsync("_MenuManagePartial")
                 }
             </div>
-
-            
+            <a href="/member/index" class="user-css">
+                <i class="fa-solid fa-user"></i>
+                <p class="item-size username">@(await UserManager.GetUserAsync(User))</p>
+            </a>
+            <input type="submit" class="btn btn-outline-primary item-size logout" value="Sign Out" />
         </div>
     </form>
 }

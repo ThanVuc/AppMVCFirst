@@ -12,6 +12,7 @@ using App.Utilities;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Authorization;
 using AppMVC.Models.Product;
+using AppMVC.Areas.ProductManage.Models;
 
 namespace AppMVC.Areas.ProductManage.Controllers
 {
@@ -285,5 +286,61 @@ namespace AppMVC.Areas.ProductManage.Controllers
         {
             return _context.Posts.Any(e => e.PostId == id);
         }
+
+        [HttpGet("/product/upload-image/{id?}")]
+        public IActionResult UploadImage(int id)
+        {
+            var product = _context.Products
+                .Include(p => p.ProductImages)
+                .FirstOrDefault(p => p.ProductId == id);
+            if (product == null)
+            {
+                return NotFound("Product is not exist");
+            }
+            ViewData["product"] = product;
+            
+            return View(new UploadFile());
+        }
+
+
+        [HttpPost("/product/upload-image/{id?}"), ActionName("UploadImage")]
+
+        public async Task<IActionResult> UploadImage(int id, [Bind("UploadImage")]UploadFile f)
+        {
+            var product = _context.Products
+                .Include(p => p.ProductImages)
+                .FirstOrDefault(p => p.ProductId == id);
+
+            if (product == null)
+            {
+                return NotFound("Product is not exist");
+            }
+
+            ViewData["product"] = product;
+
+            if (f != null)
+            {
+                var fileName = Path.GetFileNameWithoutExtension(Path.GetRandomFileName())
+                    + Path.GetExtension(f.UploadImage.FileName);
+
+                var file = Path.Combine("image","product",fileName);
+
+                using (FileStream fStream = new FileStream(file, FileMode.Create))
+                {
+                    await f.UploadImage.CopyToAsync(fStream);
+                }
+
+                // Upload Database
+                _context.ProductImages.Add(new ProductImage()
+                {
+                    FileName = fileName,
+                    Product = product
+                });
+                await _context.SaveChangesAsync();
+            }
+
+            return RedirectToAction("UploadImage",product.ProductId);
+        }
+
     }
 }

@@ -17,6 +17,7 @@ namespace AppMVC.Models
         public DbSet<CategoryProduct> CategoryProducts { get; set; }
         public DbSet<ProductModel> Products { get; set; }
         public DbSet<ProductCategoryProduct> ProductCategoryProducts { get; set; }
+        public DbSet<ProductImage> ProductImages { get; set; }
 
         public AppDBContext(DbContextOptions options) : base(options)
         {

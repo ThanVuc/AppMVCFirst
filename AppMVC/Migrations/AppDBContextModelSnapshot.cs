@@ -269,6 +269,27 @@ namespace AppMVC.Migrations
                     b.ToTable("ProductCategoryProducts");
                 });
 
+            modelBuilder.Entity("AppMVC.Models.Product.ProductImage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("FileName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductImages");
+                });
+
             modelBuilder.Entity("AppMVC.Models.Product.ProductModel", b =>
                 {
                     b.Property<int>("ProductId")
@@ -516,6 +537,17 @@ namespace AppMVC.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("AppMVC.Models.Product.ProductImage", b =>
+                {
+                    b.HasOne("AppMVC.Models.Product.ProductModel", "Product")
+                        .WithMany("ProductImages")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("AppMVC.Models.Product.ProductModel", b =>
                 {
                     b.HasOne("AppMVC.Models.AppUser", "Author")
@@ -596,6 +628,8 @@ namespace AppMVC.Migrations
             modelBuilder.Entity("AppMVC.Models.Product.ProductModel", b =>
                 {
                     b.Navigation("ProductCategoryProducts");
+
+                    b.Navigation("ProductImages");
                 });
 #pragma warning restore 612, 618
         }
