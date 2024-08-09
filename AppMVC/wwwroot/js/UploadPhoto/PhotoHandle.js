@@ -36,9 +36,8 @@ function ClickButtonUpload() {
 
 function SetClickDeleteImage() {
     $("#box-image-upload .product-image .delete-image").click(function () {
-
+        event.preventDefault();
         if (confirm("Are you sure to delete the photo?") != true) return;
-
         var deleteButton = $(this);
         var id = deleteButton.data("id");
         var url = deleteButton.data("deleteurl");
