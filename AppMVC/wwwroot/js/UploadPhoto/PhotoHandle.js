@@ -1,4 +1,5 @@
-﻿function AutoUploadFile() {
+﻿// Can be optimize in Selector to flexible
+function AutoUploadFile() {
     var item = document.getElementById("selectfileupload");
     var formData = new FormData();
 
