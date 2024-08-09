@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "yln10Z4swcACb58EUSeRRk3ERStPKkI38GF2qYWUj9Q=",
+  "Hash": "BjJ29XuUs0OWz7JvWk6PdJeRUJpo44eHnX0pVrN0ZGo=",
   "Source": "AppMVC",
   "BasePath": "_content/AppMVC",
   "Mode": "Default",
@@ -1326,6 +1326,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\site.js"
+    },
+    {
+      "Identity": "D:\\Asp.Net\\MVC\\AppMVCFirst\\appmvc\\wwwroot\\js\\UploadPhoto\\PhotoHandle.js",
+      "SourceId": "AppMVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Asp.Net\\MVC\\AppMVCFirst\\appmvc\\wwwroot\\",
+      "BasePath": "_content/AppMVC",
+      "RelativePath": "js/UploadPhoto/PhotoHandle.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\UploadPhoto\\PhotoHandle.js"
     },
     {
       "Identity": "D:\\Asp.Net\\MVC\\AppMVCFirst\\appmvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",

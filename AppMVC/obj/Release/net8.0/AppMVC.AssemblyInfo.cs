@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AppMVC")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+aeeb781954bf73cfc47f9b422ab5f678f3c299a6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e85a969f92de48b39e55ade6bf2d1443b0187f15")]
 [assembly: System.Reflection.AssemblyProductAttribute("AppMVC")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AppMVC")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

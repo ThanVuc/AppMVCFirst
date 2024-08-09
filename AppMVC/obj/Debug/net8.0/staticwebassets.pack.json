@@ -29,6 +29,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "D:\\Asp.Net\\MVC\\AppMVCFirst\\appmvc\\wwwroot\\js\\UploadPhoto\\PhotoHandle.js",
+      "PackagePath": "staticwebassets\\js\\UploadPhoto\\PhotoHandle.js"
+    },
+    {
       "Id": "D:\\Asp.Net\\MVC\\AppMVCFirst\\appmvc\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

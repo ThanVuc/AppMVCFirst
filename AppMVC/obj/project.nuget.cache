@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "DM5kfrDLOQo=",
+  "dgSpecHash": "bkv1ZUN5vaE=",
   "success": true,
-  "projectFilePath": "D:\\Asp.Net\\MVC\\AppMVCFirst\\AppMVC\\AppMVC.csproj",
+  "projectFilePath": "D:\\Asp.Net\\MVC\\AppMVCFirst\\appmvc\\AppMVC.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ADMIN\\.nuget\\packages\\aspose.imaging\\23.12.0\\aspose.imaging.23.12.0.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
@@ -61,6 +61,7 @@
     "C:\\Users\\ADMIN\\.nuget\\packages\\humanizer.core.zh-cn\\2.14.1\\humanizer.core.zh-cn.2.14.1.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\humanizer.core.zh-hans\\2.14.1\\humanizer.core.zh-hans.2.14.1.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\humanizer.core.zh-hant\\2.14.1\\humanizer.core.zh-hant.2.14.1.nupkg.sha512",
+    "C:\\Users\\ADMIN\\.nuget\\packages\\jquery\\3.7.1\\jquery.3.7.1.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\mailkit\\4.6.0\\mailkit.4.6.0.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\microsoft.aspnetcore.authentication.facebook\\8.0.6\\microsoft.aspnetcore.authentication.facebook.8.0.6.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\microsoft.aspnetcore.authentication.google\\8.0.6\\microsoft.aspnetcore.authentication.google.8.0.6.nupkg.sha512",

@@ -21,18 +21,32 @@
     <button class="btn btn-primary" asp-action="UploadImage" asp-route-id="@product.ProductId" >Uploads</button>
 </form>
 
-<div id="box-image-upload" class="d-flex flex-wrap image-upload" data-id="@product.ProductId" >
-@*
-    @foreach(var img in product.ProductImages)
-    {
-        <div class="product-image p-1">
-            <img class="w-100" src="/image/product/@img.FileName" alt="Err" />
-            <button class="btn btn-danger delete-image" data-id="@img.Id" >Delete</button>
-        </div>
-    }
-*@
+<hr />
+
+<input 
+    class="collapse"
+    type="file"
+    id="selectfileupload"
+    onchange="AutoUploadFile()"
+    data-id="@product.ProductId"
+    data-url="@Url.Action("UploadImage")" />
+
+<span class="btn btn-primary" onclick="ClickButtonUpload()">Uploads</span>
+
+
+<div id="box-image-upload" class="d-flex flex-wrap image-upload" 
+    data-deleteUrl="@Url.Action("DeleteImage")" 
+    data-url="@Url.Action("ListImage")" 
+    data-id="@product.ProductId">
 </div>
 
 @section Scripts {
-    
+    <script src="/js/UploadPhoto/PhotoHandle.js"></script>
+
+    <script>
+
+        $(document).ready(function(){
+            LoadImage();
+        })
+    </script>
 }

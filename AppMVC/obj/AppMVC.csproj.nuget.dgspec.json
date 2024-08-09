@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Asp.Net\\MVC\\AppMVCFirst\\AppMVC\\AppMVC.csproj": {}
+    "D:\\Asp.Net\\MVC\\AppMVCFirst\\appmvc\\AppMVC.csproj": {}
   },
   "projects": {
-    "D:\\Asp.Net\\MVC\\AppMVCFirst\\AppMVC\\AppMVC.csproj": {
+    "D:\\Asp.Net\\MVC\\AppMVCFirst\\appmvc\\AppMVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Asp.Net\\MVC\\AppMVCFirst\\AppMVC\\AppMVC.csproj",
+        "projectUniqueName": "D:\\Asp.Net\\MVC\\AppMVCFirst\\appmvc\\AppMVC.csproj",
         "projectName": "AppMVC",
-        "projectPath": "D:\\Asp.Net\\MVC\\AppMVCFirst\\AppMVC\\AppMVC.csproj",
+        "projectPath": "D:\\Asp.Net\\MVC\\AppMVCFirst\\appmvc\\AppMVC.csproj",
         "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "D:\\Asp.Net\\MVC\\AppMVCFirst\\AppMVC\\obj\\",
+        "outputPath": "D:\\Asp.Net\\MVC\\AppMVCFirst\\appmvc\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -141,6 +141,10 @@
             "elFinder.NetCore": {
               "target": "Package",
               "version": "[1.4.0, )"
+            },
+            "jQuery": {
+              "target": "Package",
+              "version": "[3.7.1, )"
             }
           },
           "imports": [

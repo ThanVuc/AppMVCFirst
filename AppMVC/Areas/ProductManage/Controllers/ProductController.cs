@@ -302,7 +302,7 @@ namespace AppMVC.Areas.ProductManage.Controllers
             return View(new UploadFile());
         }
 
-
+        // Upload MVC
         [HttpPost("/product/upload-image/{id?}"), ActionName("UploadImage")]
 
         public async Task<IActionResult> UploadImage(int id, [Bind("UploadImage")]UploadFile f)
@@ -340,6 +340,93 @@ namespace AppMVC.Areas.ProductManage.Controllers
             }
 
             return RedirectToAction("UploadImage",product.ProductId);
+        }
+
+        public IActionResult ListImage(int id)
+        {
+            var product = _context.Products
+                .Include(p => p.ProductImages)
+                .FirstOrDefault(p => p.ProductId == id);
+
+            if (product == null)
+            {
+                return Json(new
+                {
+                    success = 0,
+                    message = "Product Not Found"
+                });
+            }
+
+            var listData = product.ProductImages.Select(img => new
+            {
+                id = img.Id,
+                path = "/image/product/" + img.FileName
+            });
+
+            return Json(new
+            {
+                success = 1,
+                images = listData
+            });
+        }
+
+        public async Task<IActionResult> DeleteImage(int? id)
+        {
+            if (id != null)
+            {
+                var item = await _context.ProductImages.FirstOrDefaultAsync(img => img.Id == id);
+                // Delete In Folder
+                string file = Path.Combine("image","product",item.FileName);
+                System.IO.File.Delete(file);
+
+
+                // Delete in DB
+                _context.Remove(item);
+                await _context.SaveChangesAsync();
+            }
+            return Ok();
+        }
+
+        //Upload API
+        [HttpPost("/product/api/upload-image/{id?}"), ActionName("UploadImageAPI")]
+
+        public async Task<IActionResult> UploadImageAPI(int id, [Bind("UploadImage")] UploadFile f)
+        {
+            var product = _context.Products
+                .Include(p => p.ProductImages)
+                .FirstOrDefault(p => p.ProductId == id);
+
+            if (product == null)
+            {
+                return Json(new
+                {
+                    status = 404,
+                    message = "Not Found Product"
+                });
+            }
+
+            if (f != null)
+            {
+                var fileName = Path.GetFileNameWithoutExtension(Path.GetRandomFileName())
+                    + Path.GetExtension(f.UploadImage.FileName);
+
+                var file = Path.Combine("image", "product", fileName);
+
+                using (FileStream fStream = new FileStream(file, FileMode.Create))
+                {
+                    await f.UploadImage.CopyToAsync(fStream);
+                }
+
+                // Upload Database
+                _context.ProductImages.Add(new ProductImage()
+                {
+                    FileName = fileName,
+                    Product = product
+                });
+                await _context.SaveChangesAsync();
+            }
+
+            return Ok();
         }
 
     }
