@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using AppMVC.Models.Product;
+using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 
 namespace AppMVC.Models
@@ -11,6 +12,11 @@ namespace AppMVC.Models
 
         [DataType(DataType.Date)]
         public DateTime? BirthDay { get; set; }
+
+
+
+        public Cart UserCart { get; set; }
+        public List<Bill> BillList { get; set; }
 
     }
 }

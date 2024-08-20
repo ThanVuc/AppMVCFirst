@@ -4,6 +4,9 @@
     CategoryProduct category = ViewBag.category;
 }
 
+<link rel="stylesheet" href="~/css/Product/ViewProduct.css" />
+
+
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a asp-action="Index" asp-route-categoryslug="" >Home</a></li>
@@ -26,26 +29,33 @@
     </div>
 }
 
+<div class="product-card">
+    @foreach (var item in Model)
+    {
+        string imagePath = "/image/no-image.png";
+        if (item.ProductImages.Any())
+        {
+            imagePath = "/image/product/" + item.ProductImages.First().FileName;
+        }
 
-@foreach (var item in Model)
-{
-    <div class="card mt-3" style="max-width: 100%;">
-        <div class="row g-0">
-            <div class="col-md-4">
-                <img src="/image/no-image.png" class="img-fluid rounded-start" alt="...">
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <a asp-controller="ViewProduct" asp-action="Detail" asp-route-productslug="@item.Slug">
-                        <h5 class="card-title">@item.Title</h5>
-                    </a>
-                    <p class="card-text text-muted">@item.Description</p>
-                    <p class="card-text text-danger"><small class="text-muted">Author: <strong>@item.Author.UserName</strong> | Updated: <strong>@item.DateUpdated.ToString("d")</strong></small></p>
-                </div>
+
+        var image = item.ProductImages.FirstOrDefault();
+        <div class="card" >
+            <img src="@imagePath" class="card-img-top" alt="...">
+            <div class="card-body">
+                <a asp-controller="ViewProduct" asp-action="Detail" asp-route-productslug="@item.Slug">
+                    <h5 class="card-title">@item.Title</h5>
+                </a>
+                <p class="card-text text-muted">@item.Description</p>
+                <p class="card-text text-danger text-center">Price: @item.Price</p>
+                <a class="btn btn-danger order">Order</a>
+                <p class="card-text text-danger"><small class="text-muted">Author: <strong>@item.Seller.UserName</strong> | Updated: <strong>@item.DateUpdated.ToString("d")</strong></small></p>
+
             </div>
         </div>
-    </div>
-}
+        
+    }
+</div>
 
 <div class="paging-position">
     <partial name="_PagingPartial" model="@ViewBag.PagingModel" />

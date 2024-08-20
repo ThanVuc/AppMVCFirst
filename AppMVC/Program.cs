@@ -26,6 +26,13 @@ services.AddDbContext<AppDBContext>(options =>
     options.UseSqlServer(connectString);
 });
 
+//Session Config
+services.AddSession(cfg =>
+{
+    cfg.Cookie.Name = "MySession";
+    cfg.IdleTimeout = new TimeSpan(0,30,0);
+});
+
 
 services.AddControllersWithViews();
 services.AddRazorPages();
@@ -133,6 +140,8 @@ app.UseStaticFiles(new StaticFileOptions()
 app.AddStatusCodePage();
 
 app.UseRouting();
+
+app.UseSession();
 
 app.UseAuthentication();
 app.UseAuthorization();

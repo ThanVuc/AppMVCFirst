@@ -9316,6 +9316,7 @@
       "Microsoft.EntityFrameworkCore.Design >= 8.0.6",
       "Microsoft.EntityFrameworkCore.SqlServer >= 8.0.6",
       "Microsoft.EntityFrameworkCore.Tools >= 8.0.6",
+      "Microsoft.Extensions.Caching.Memory >= 8.0.0",
       "Microsoft.Extensions.Logging.Console >= 8.0.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 8.0.3",
       "Microsoft.VisualStudio.Web.CodeGenerators.Mvc >= 8.0.3",
@@ -9438,6 +9439,10 @@
             "suppressParent": "All",
             "target": "Package",
             "version": "[8.0.6, )"
+          },
+          "Microsoft.Extensions.Caching.Memory": {
+            "target": "Package",
+            "version": "[8.0.0, )"
           },
           "Microsoft.Extensions.Logging.Console": {
             "target": "Package",

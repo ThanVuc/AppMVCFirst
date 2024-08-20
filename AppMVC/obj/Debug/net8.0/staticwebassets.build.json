@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "BjJ29XuUs0OWz7JvWk6PdJeRUJpo44eHnX0pVrN0ZGo=",
+  "Hash": "jF9Q0wBxmMsNvmt9YOV2p+uiMTdRvCremQqoY7nKRlQ=",
   "Source": "AppMVC",
   "BasePath": "_content/AppMVC",
   "Mode": "Default",
@@ -1231,6 +1231,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\Product\\UploadProductImage.css"
+    },
+    {
+      "Identity": "D:\\Asp.Net\\MVC\\AppMVCFirst\\appmvc\\wwwroot\\css\\Product\\ViewProduct.css",
+      "SourceId": "AppMVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Asp.Net\\MVC\\AppMVCFirst\\appmvc\\wwwroot\\",
+      "BasePath": "_content/AppMVC",
+      "RelativePath": "css/Product/ViewProduct.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Product\\ViewProduct.css"
     },
     {
       "Identity": "D:\\Asp.Net\\MVC\\AppMVCFirst\\appmvc\\wwwroot\\css\\share\\loginpartial.css",

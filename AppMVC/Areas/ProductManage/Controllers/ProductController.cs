@@ -48,7 +48,7 @@ namespace AppMVC.Areas.ProductManage.Controllers
             // Take Constraint Entity
             var product = await _context.Products
                 .OrderByDescending(p => p.DateUpdated)
-                .Include(p => p.Author)
+                .Include(p => p.Seller)
                 .Include(p => p.ProductCategoryProducts)
                 .ThenInclude(pc => pc.CategoryProduct)
                 .ToListAsync();
@@ -67,7 +67,7 @@ namespace AppMVC.Areas.ProductManage.Controllers
             }
 
             var product = await _context.Products
-                .Include(p => p.Author)
+                .Include(p => p.Seller)
                 .FirstOrDefaultAsync(m => m.ProductId == id);
             if (product == null)
             {
@@ -86,7 +86,7 @@ namespace AppMVC.Areas.ProductManage.Controllers
         // POST: Blog/Posts/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([FromForm]int[] categoriesID,[Bind("Title,Description,Slug,Content,Published,AuthorId")] ProductModel product)
+        public async Task<IActionResult> Create([FromForm]int[] categoriesID,[Bind("Title,Description,Slug,Content,Published,SellerID")] ProductModel product)
         {
             if (ModelState.IsValid)
             {
@@ -141,7 +141,7 @@ namespace AppMVC.Areas.ProductManage.Controllers
         // POST: EDIT
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, int[] categoriesID, [Bind("ProductId,Title,Description,Slug,Content,Published,AuthorId,ProductCategoryProducts")] ProductModel product)
+        public async Task<IActionResult> Edit(int id, int[] categoriesID, [Bind("ProductId,Title,Description,Slug,Content,Published,SellerID,ProductCategoryProducts")] ProductModel product)
         {
             if (id != product.ProductId)
             {
@@ -252,7 +252,7 @@ namespace AppMVC.Areas.ProductManage.Controllers
             }
 
             var product = await _context.Products
-                .Include(p => p.Author)
+                .Include(p => p.Seller)
                 .FirstOrDefaultAsync(m => m.ProductId == id);
             if (product == null)
             {

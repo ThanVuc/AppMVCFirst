@@ -4,8 +4,11 @@
 @{
     var listCategory = ViewBag.categories as List<CategoryProduct>;
     var category = ViewBag.category as CategoryProduct;
-    string authorName = Model.Author == null ? "Admin" : Model.Author.Email;
+    string sellerName = Model.Seller == null ? "Admin" : Model.Seller.Email;
 }
+
+<link rel="stylesheet" href="~/css/Product/ViewProduct.css" />
+
 
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
@@ -27,7 +30,7 @@
         <h4> @Model.Title</h4>
         <p>@Model.Description</p>
         <info>
-            <p>Author: <strong>@authorName</strong> | Update: @Model.DateUpdated.ToString("d")</p>
+            <p>Author: <strong>@sellerName</strong> | Update: @Model.DateUpdated.ToString("d")</p>
             
             @if (Model.ProductCategoryProducts.Count > 0)
             {
@@ -43,6 +46,15 @@
     </div>
     
     <div class="content">
+        <div class="img" >
+            @if (Model.ProductImages.Any())
+            {
+                foreach (var imgPath in Model.ProductImages)
+                {
+                    <img src="/image/product/@imgPath.FileName" />
+                }
+            }
+        </div>
         <p>
             @Model.Content
         </p>

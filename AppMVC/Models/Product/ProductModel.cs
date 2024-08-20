@@ -28,14 +28,19 @@ namespace AppMVC.Models.Product
         [Display(Name = "Published")]
         public bool Published { set; get; }
 
+        [DataType(DataType.Currency)]
+        public double Price { set; get; }
+
+        public int Number { get; set; }
+
         public List<ProductCategoryProduct> ProductCategoryProducts { get; set; }
 
         [Required]
-        [Display(Name = "Author")]
-        public string AuthorId { set; get; }
-        [ForeignKey("AuthorId")]
-        [Display(Name = "Author")]
-        public AppUser Author { set; get; }
+        [Display(Name = "Seller")]
+        public string SellerId { set; get; }
+        [ForeignKey("SellerId")]
+        [Display(Name = "Seller")]
+        public AppUser Seller { set; get; }
 
         [Display(Name = "Created Date")]
         public DateTime DateCreated { set; get; }
@@ -44,6 +49,10 @@ namespace AppMVC.Models.Product
         public DateTime DateUpdated { set; get; }
 
         public List<ProductImage> ProductImages { get; set; }
+
+        public List<CartItem> CartItems { get; set; }
+
+        public List<Bill> BillList { get; set; }
 
     }
 }

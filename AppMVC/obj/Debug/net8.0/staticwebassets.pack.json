@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\css\\Product\\UploadProductImage.css"
     },
     {
+      "Id": "D:\\Asp.Net\\MVC\\AppMVCFirst\\appmvc\\wwwroot\\css\\Product\\ViewProduct.css",
+      "PackagePath": "staticwebassets\\css\\Product\\ViewProduct.css"
+    },
+    {
       "Id": "D:\\Asp.Net\\MVC\\AppMVCFirst\\appmvc\\wwwroot\\css\\share\\loginpartial.css",
       "PackagePath": "staticwebassets\\css\\share\\loginpartial.css"
     },

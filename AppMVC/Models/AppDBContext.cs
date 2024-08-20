@@ -19,6 +19,11 @@ namespace AppMVC.Models
         public DbSet<ProductCategoryProduct> ProductCategoryProducts { get; set; }
         public DbSet<ProductImage> ProductImages { get; set; }
 
+        // Cart
+        public DbSet<Cart> Carts { get; set; }
+        public DbSet<CartItem> CartItems { get; set; }
+        public DbSet<Bill> Bills { get; set; }
+
         public AppDBContext(DbContextOptions options) : base(options)
         {
         }
@@ -69,11 +74,29 @@ namespace AppMVC.Models
             {
                 entity.HasIndex(p => p.Slug)
                 .IsUnique();
+
+                entity.HasOne(p => p.Seller)
+                .WithMany()
+                .HasForeignKey(p => p.SellerId)
+                .OnDelete(DeleteBehavior.NoAction);
             });
 
             modelBuilder.Entity<ProductCategoryProduct>(entity =>
             {
                 entity.HasKey(pc => new { pc.ProductID, pc.CategoryID });
+            });
+
+            //Cart
+            modelBuilder.Entity<Bill>(entity =>
+            {
+                entity.HasIndex(b => new { b.ProductId, b.CustomerId })
+                .IsUnique();
+            });
+
+            modelBuilder.Entity<CartItem>(entity =>
+            {
+                entity.HasIndex(cI => new { cI.ProductId, cI.CartId })
+                .IsUnique();
             });
 
         }

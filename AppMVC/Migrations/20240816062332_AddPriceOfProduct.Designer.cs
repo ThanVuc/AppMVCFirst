@@ -4,6 +4,7 @@ using AppMVC.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AppMVC.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    partial class AppDBContextModelSnapshot : ModelSnapshot
+    [Migration("20240816062332_AddPriceOfProduct")]
+    partial class AddPriceOfProduct
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -220,84 +223,6 @@ namespace AppMVC.Migrations
                     b.ToTable("Contacts");
                 });
 
-            modelBuilder.Entity("AppMVC.Models.Product.Bill", b =>
-                {
-                    b.Property<int>("BillItemId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BillItemId"));
-
-                    b.Property<DateTime>("BoughTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("CustomerId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.HasKey("BillItemId");
-
-                    b.HasIndex("CustomerId");
-
-                    b.HasIndex("ProductId", "CustomerId")
-                        .IsUnique();
-
-                    b.ToTable("Bills");
-                });
-
-            modelBuilder.Entity("AppMVC.Models.Product.Cart", b =>
-                {
-                    b.Property<int>("CartId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CartId"));
-
-                    b.Property<string>("CustomerId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("CartId");
-
-                    b.HasIndex("CustomerId")
-                        .IsUnique();
-
-                    b.ToTable("Carts");
-                });
-
-            modelBuilder.Entity("AppMVC.Models.Product.CartItem", b =>
-                {
-                    b.Property<int>("CartItemId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CartItemId"));
-
-                    b.Property<int>("CartId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.HasKey("CartItemId");
-
-                    b.HasIndex("CartId");
-
-                    b.HasIndex("ProductId", "CartId")
-                        .IsUnique();
-
-                    b.ToTable("CartItems");
-                });
-
             modelBuilder.Entity("AppMVC.Models.Product.CategoryProduct", b =>
                 {
                     b.Property<int>("Id")
@@ -376,6 +301,10 @@ namespace AppMVC.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductId"));
 
+                    b.Property<string>("AuthorId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("Content")
                         .HasColumnType("nvarchar(max)");
 
@@ -388,18 +317,11 @@ namespace AppMVC.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Number")
-                        .HasColumnType("int");
-
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
+                    b.Property<float>("Price")
+                        .HasColumnType("real");
 
                     b.Property<bool>("Published")
                         .HasColumnType("bit");
-
-                    b.Property<string>("SellerId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Slug")
                         .HasMaxLength(160)
@@ -412,7 +334,7 @@ namespace AppMVC.Migrations
 
                     b.HasKey("ProductId");
 
-                    b.HasIndex("SellerId");
+                    b.HasIndex("AuthorId");
 
                     b.HasIndex("Slug")
                         .IsUnique()
@@ -593,55 +515,6 @@ namespace AppMVC.Migrations
                     b.Navigation("Post");
                 });
 
-            modelBuilder.Entity("AppMVC.Models.Product.Bill", b =>
-                {
-                    b.HasOne("AppMVC.Models.AppUser", "Customer")
-                        .WithMany("BillList")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("AppMVC.Models.Product.ProductModel", "Product")
-                        .WithMany("BillList")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Customer");
-
-                    b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("AppMVC.Models.Product.Cart", b =>
-                {
-                    b.HasOne("AppMVC.Models.AppUser", "Customer")
-                        .WithOne("UserCart")
-                        .HasForeignKey("AppMVC.Models.Product.Cart", "CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Customer");
-                });
-
-            modelBuilder.Entity("AppMVC.Models.Product.CartItem", b =>
-                {
-                    b.HasOne("AppMVC.Models.Product.Cart", "Cart")
-                        .WithMany("CartItems")
-                        .HasForeignKey("CartId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("AppMVC.Models.Product.ProductModel", "Product")
-                        .WithMany("CartItems")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Cart");
-
-                    b.Navigation("Product");
-                });
-
             modelBuilder.Entity("AppMVC.Models.Product.CategoryProduct", b =>
                 {
                     b.HasOne("AppMVC.Models.Product.CategoryProduct", "ParentCategory")
@@ -683,13 +556,13 @@ namespace AppMVC.Migrations
 
             modelBuilder.Entity("AppMVC.Models.Product.ProductModel", b =>
                 {
-                    b.HasOne("AppMVC.Models.AppUser", "Seller")
+                    b.HasOne("AppMVC.Models.AppUser", "Author")
                         .WithMany()
-                        .HasForeignKey("SellerId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Seller");
+                    b.Navigation("Author");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -743,13 +616,6 @@ namespace AppMVC.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("AppMVC.Models.AppUser", b =>
-                {
-                    b.Navigation("BillList");
-
-                    b.Navigation("UserCart");
-                });
-
             modelBuilder.Entity("AppMVC.Models.Blog.Category", b =>
                 {
                     b.Navigation("CategoryChildren");
@@ -760,11 +626,6 @@ namespace AppMVC.Migrations
                     b.Navigation("PostCategories");
                 });
 
-            modelBuilder.Entity("AppMVC.Models.Product.Cart", b =>
-                {
-                    b.Navigation("CartItems");
-                });
-
             modelBuilder.Entity("AppMVC.Models.Product.CategoryProduct", b =>
                 {
                     b.Navigation("CategoryChildren");
@@ -772,10 +633,6 @@ namespace AppMVC.Migrations
 
             modelBuilder.Entity("AppMVC.Models.Product.ProductModel", b =>
                 {
-                    b.Navigation("BillList");
-
-                    b.Navigation("CartItems");
-
                     b.Navigation("ProductCategoryProducts");
 
                     b.Navigation("ProductImages");

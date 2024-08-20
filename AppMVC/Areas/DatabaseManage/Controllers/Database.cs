@@ -197,16 +197,18 @@ namespace AppMVC.Areas.DatabaseManage.Controllers
             int postNumber = 1;
 
             var user = _userManager.GetUserAsync(User).Result;
-            var fakePost = new Faker<ProductModel>();
+            var fakeProduct = new Faker<ProductModel>();
 
             // Rule when generate
-            fakePost.RuleFor(p => p.AuthorId, fakePost => user.Id);
-            fakePost.RuleFor(p => p.Content, fakePost => fakePost.Lorem.Paragraph(7) + " [FakeData]");
-            fakePost.RuleFor(p => p.DateCreated, fakePost => fakePost.Date.Between(new DateTime(2011, 1, 1), new DateTime(2024, 7, 1)));
-            fakePost.RuleFor(p => p.Description, fakePost => fakePost.Lorem.Sentences(3));
-            fakePost.RuleFor(p => p.Published, fakePost => true);
-            fakePost.RuleFor(p => p.Slug, fakePost => fakePost.Lorem.Slug());
-            fakePost.RuleFor(p => p.Title, fakePost => $"Product {postNumber++} " + fakePost.Lorem.Sentence(3, 4).Trim('.'));
+            fakeProduct.RuleFor(p => p.SellerId, fakeProduct => user.Id);
+            fakeProduct.RuleFor(p => p.Content, fakeProduct => fakeProduct.Lorem.Paragraph(7) + " [FakeData]");
+            fakeProduct.RuleFor(p => p.DateCreated, fakeProduct => fakeProduct.Date.Between(new DateTime(2011, 1, 1), new DateTime(2024, 7, 1)));
+            fakeProduct.RuleFor(p => p.Description, fakeProduct => fakeProduct.Lorem.Sentences(3));
+            fakeProduct.RuleFor(p => p.Published, fakeProduct => true);
+            fakeProduct.RuleFor(p => p.Slug, fakeProduct => fakeProduct.Lorem.Slug());
+            fakeProduct.RuleFor(p => p.Title, fakeProduct => $"Product {postNumber++} " + fakeProduct.Lorem.Sentence(3, 4).Trim('.'));
+            fakeProduct.RuleFor(p => p.Price, fakeProduct => 12.00);
+            fakeProduct.RuleFor(p => p.Number, fakeProduct => fakeProduct.Random.Number(3,50));
 
             var products = new List<ProductModel>();
             // Product category Product
@@ -214,7 +216,7 @@ namespace AppMVC.Areas.DatabaseManage.Controllers
 
             for (int i = 1; i <= 40; i++)
             {
-                var product = fakePost.Generate();
+                var product = fakeProduct.Generate();
                 product.DateUpdated = product.DateCreated;
                 products.Add(product);
                 pcp.Add(new ProductCategoryProduct()

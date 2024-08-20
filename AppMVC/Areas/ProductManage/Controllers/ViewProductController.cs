@@ -19,7 +19,7 @@ namespace AppMVC.Areas.Blog.Controllers
         }
 
         [Route("/product/{categoryslug?}")]
-        public IActionResult Index([FromRoute(Name = "categoryslug")] string slug, [FromQuery(Name = "p")] int currentPage, [FromQuery] int size = 5)
+        public IActionResult Index([FromRoute(Name = "categoryslug")] string slug, [FromQuery(Name = "p")] int currentPage, [FromQuery] int size = 6)
         {
             ViewBag.categories = getCategories();
             ViewBag.slug = slug;
@@ -43,9 +43,10 @@ namespace AppMVC.Areas.Blog.Controllers
             int totalProduct;
             PagingModel pagingModel;
             var products = _context.Products
-                .Include(p => p.Author)
+                .Include(p => p.Seller)
                 .Include(p => p.ProductCategoryProducts)
                 .ThenInclude(pc => pc.CategoryProduct)
+                .Include(p => p.ProductImages)
                 .AsQueryable();
 
             products.OrderByDescending(p => p.DateUpdated);
@@ -58,7 +59,7 @@ namespace AppMVC.Areas.Blog.Controllers
 
                 products = _context.ProductCategoryProducts
                     .Include(pc => pc.Product)
-                    .ThenInclude(p => p.Author)
+                    .ThenInclude(p => p.Seller)
                     .Where(pc => ids.Contains(pc.CategoryID))
                     .Select(pc => pc.Product);
             }
@@ -91,9 +92,10 @@ namespace AppMVC.Areas.Blog.Controllers
             ViewBag.categories = getCategories();
 
             var product = await _context.Products
-                .Include(p => p.Author)
+                .Include(p => p.Seller)
                 .Include(p => p.ProductCategoryProducts)
                 .ThenInclude(p => p.CategoryProduct)
+                .Include(p => p.ProductImages)
                 .FirstOrDefaultAsync(p => p.Slug == slug);
 
             ViewBag.category = product.ProductCategoryProducts.FirstOrDefault()?.CategoryProduct;
