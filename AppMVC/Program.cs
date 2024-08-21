@@ -1,4 +1,5 @@
-﻿using AppMVC.ExtensionMethod;
+﻿using AppMVC.Areas.ProductManage.Services;
+using AppMVC.ExtensionMethod;
 using AppMVC.Models;
 using AppMVC.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -24,9 +25,11 @@ services.AddDbContext<AppDBContext>(options =>
 {
     string connectString = configuration.GetConnectionString("MyBlogContext");
     options.UseSqlServer(connectString);
+    options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
 });
 
 //Session Config
+services.AddDistributedMemoryCache();
 services.AddSession(cfg =>
 {
     cfg.Cookie.Name = "MySession";
@@ -115,6 +118,9 @@ services.AddAuthorization(options =>
 var mailSettings = configuration.GetSection("MailSettings");
 services.Configure<MailSettings>(mailSettings);
 services.AddTransient<IEmailSmsSender, SendMailServices>();
+
+//Register Cart Services
+services.AddTransient<CartServices>();
 
 
 

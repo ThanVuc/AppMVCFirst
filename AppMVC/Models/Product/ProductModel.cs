@@ -31,7 +31,8 @@ namespace AppMVC.Models.Product
         [DataType(DataType.Currency)]
         public double Price { set; get; }
 
-        public int Number { get; set; }
+        [Display(Name = "Quantity")]
+        public int Quantity { get; set; }
 
         public List<ProductCategoryProduct> ProductCategoryProducts { get; set; }
 

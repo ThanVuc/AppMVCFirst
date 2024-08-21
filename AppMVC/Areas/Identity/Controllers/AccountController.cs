@@ -31,17 +31,20 @@ namespace App.Areas.Identity.Controllers
         private readonly SignInManager<AppUser> _signInManager;
         private readonly IEmailSmsSender _emailSender;
         private readonly ILogger<AccountController> _logger;
+        private readonly AppDBContext _context;
 
         public AccountController(
             UserManager<AppUser> userManager,
             SignInManager<AppUser> signInManager,
             IEmailSmsSender emailSender,
-            ILogger<AccountController> logger)
+            ILogger<AccountController> logger,
+            AppDBContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _logger = logger;
+            _context = context;
         }
 
         // GET: /Account/Login
@@ -63,13 +66,13 @@ namespace App.Areas.Identity.Controllers
             returnUrl ??= Url.Content("~/");
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
-            {
-                 
-                var result = await _signInManager.PasswordSignInAsync(model.UserNameOrEmail, model.Password, model.RememberMe, lockoutOnFailure: true);                
-                // Tìm UserName theo Email, đăng nhập lại
+            {                
+                var result = await _signInManager.PasswordSignInAsync(model.UserNameOrEmail, model.Password, model.RememberMe, lockoutOnFailure: true);
+                // Tìm UserName theo Email, đăng nhập lại                
                 if ((!result.Succeeded) && AppUtilities.IsValidEmail(model.UserNameOrEmail))
                 {
                     var user = await _userManager.FindByEmailAsync(model.UserNameOrEmail);
+ 
                     if (user != null)
                     {
                         result = await _signInManager.PasswordSignInAsync(user.UserName, model.Password, model.RememberMe, lockoutOnFailure: true);
@@ -79,6 +82,7 @@ namespace App.Areas.Identity.Controllers
                 if (result.Succeeded)
                 {
                     _logger.LogInformation(1, "User logged in.");
+
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)
@@ -152,7 +156,7 @@ namespace App.Areas.Identity.Controllers
 
                     await _emailSender.SendEmailAsync(model.Email, 
                         "Xác nhận địa chỉ email",
-                        @$"Bạn đã đăng ký tài khoản trên RazorWeb, 
+                        @$"Bạn đã đăng ký tài khoản trên AppMVC, 
                            hãy <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>bấm vào đây</a> 
                            để kích hoạt tài khoản.");
 

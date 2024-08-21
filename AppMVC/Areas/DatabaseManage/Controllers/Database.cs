@@ -208,7 +208,7 @@ namespace AppMVC.Areas.DatabaseManage.Controllers
             fakeProduct.RuleFor(p => p.Slug, fakeProduct => fakeProduct.Lorem.Slug());
             fakeProduct.RuleFor(p => p.Title, fakeProduct => $"Product {postNumber++} " + fakeProduct.Lorem.Sentence(3, 4).Trim('.'));
             fakeProduct.RuleFor(p => p.Price, fakeProduct => 12.00);
-            fakeProduct.RuleFor(p => p.Number, fakeProduct => fakeProduct.Random.Number(3,50));
+            fakeProduct.RuleFor(p => p.Quantity, fakeProduct => fakeProduct.Random.Number(3,50));
 
             var products = new List<ProductModel>();
             // Product category Product

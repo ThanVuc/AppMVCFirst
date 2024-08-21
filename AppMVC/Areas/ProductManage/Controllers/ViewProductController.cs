@@ -1,8 +1,12 @@
-﻿using AppMVC.Models;
+﻿using AppMVC.Areas.ProductManage.Services;
+using AppMVC.Models;
 using AppMVC.Models.Blog;
 using AppMVC.Models.Product;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using NuGet.Versioning;
 
 namespace AppMVC.Areas.Blog.Controllers
 {
@@ -11,11 +15,18 @@ namespace AppMVC.Areas.Blog.Controllers
     {
         private readonly AppDBContext _context;
         private readonly ILogger<ViewProductController> _logger;
+        private readonly CartServices _cartServices;
+        private readonly UserManager<AppUser> _userManager;
 
-        public ViewProductController(AppDBContext context, ILogger<ViewProductController> logger)
+        public ViewProductController(AppDBContext context,
+            ILogger<ViewProductController> logger,
+            CartServices cartServices,
+            UserManager<AppUser> userManager)
         {
             _context = context;
             _logger = logger;
+            _cartServices = cartServices;
+            _userManager = userManager;
         }
 
         [Route("/product/{categoryslug?}")]
@@ -117,6 +128,76 @@ namespace AppMVC.Areas.Blog.Controllers
                 .Where(c => c.ParentCategory == null)
                 .ToList();
             return categories;
+        }
+
+        public async Task<IActionResult> AddToCart([FromQuery] int productId)
+        {
+            var product = await _context.Products
+                .FirstOrDefaultAsync(p => p.ProductId == productId);
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            var cartList = _cartServices.GetCartItems();
+
+            var cartItem = cartList
+                .FirstOrDefault(c => c.Product.ProductId == productId);
+            if (cartItem != null)
+            {
+                cartItem.Quantity++;
+            } else
+            {
+                var user = await _userManager.GetUserAsync(User);
+
+                var cart = _context.Carts
+                    .FirstOrDefault(c => c.Customer == user);
+
+                cartList.Add(new ProductManage.Models.CartItem() { Product = product, Quantity = 1 });
+            }
+
+            _cartServices.SaveCart((List<ProductManage.Models.CartItem>)cartList);
+
+            return RedirectToAction(nameof(ProductCart));
+        }
+
+        [HttpGet("/cart")]
+        [Authorize]
+        public IActionResult ProductCart()
+        {
+            return View((List<ProductManage.Models.CartItem>)_cartServices.GetCartItems());
+        }
+
+        [HttpPost("/cart/update")]
+        public IActionResult UpdateCart([FromForm]int productid,[FromForm] int quantity)
+        {
+            var cart = _cartServices.GetCartItems();
+            var cartItem = cart.FirstOrDefault(c => c.Product.ProductId == productid);
+            
+            if (cartItem != null)
+            {
+                cartItem.Quantity = quantity;
+            }
+
+            _cartServices.SaveCart(cart);
+
+            return Ok();
+        }
+
+        [Route("/cart/delete")]
+        public IActionResult RemoveCart([FromQuery]int productid)
+        {
+            var cartList = _cartServices.GetCartItems();
+            var cartItem = cartList.FirstOrDefault(item => item.Product.ProductId == productid);
+
+            if (cartItem != null)
+            {
+                cartList.Remove(cartItem);
+            }
+
+            _cartServices.SaveCart(cartList);
+
+            return RedirectToAction(nameof(ProductCart));
         }
     }
 }

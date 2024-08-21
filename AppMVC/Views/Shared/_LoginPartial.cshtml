@@ -15,6 +15,12 @@
                     @await Html.PartialAsync("_MenuManagePartial")
                 }
             </div>
+            <div class="item-size pt-1">
+                @if (Engine.FindView(ViewContext, "_ShoppingCartPartial", false).Success)
+                {
+                    @await Html.PartialAsync("_ShoppingCartPartial")
+                }
+            </div>
             <a href="/member/index" class="user-css">
                 <i class="fa-solid fa-user"></i>
                 <p class="item-size username">@(await UserManager.GetUserAsync(User))</p>

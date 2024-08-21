@@ -3,6 +3,7 @@ using AppMVC.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Net;
+using AppMVC.Areas.ProductManage.Services;
 
 namespace AppMVC.Controllers
 {
@@ -16,7 +17,7 @@ namespace AppMVC.Controllers
         }
 
         public IActionResult Index()
-        {
+        {     
             return View();
         }
 

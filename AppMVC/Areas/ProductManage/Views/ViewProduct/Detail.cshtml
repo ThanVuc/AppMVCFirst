@@ -31,7 +31,7 @@
         <p>@Model.Description</p>
         <info>
             <p>Author: <strong>@sellerName</strong> | Update: @Model.DateUpdated.ToString("d")</p>
-            
+            <p>Quantity: @Model.Quantity</p>
             @if (Model.ProductCategoryProducts.Count > 0)
             {
                 <p>Categories: </p>
