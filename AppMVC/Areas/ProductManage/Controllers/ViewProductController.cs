@@ -2,11 +2,14 @@
 using AppMVC.Models;
 using AppMVC.Models.Blog;
 using AppMVC.Models.Product;
+using AppMVC.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Shared;
 using NuGet.Versioning;
+using SixLabors.ImageSharp.Formats;
 
 namespace AppMVC.Areas.Blog.Controllers
 {
@@ -17,16 +20,19 @@ namespace AppMVC.Areas.Blog.Controllers
         private readonly ILogger<ViewProductController> _logger;
         private readonly CartServices _cartServices;
         private readonly UserManager<AppUser> _userManager;
+        private readonly IEmailSmsSender _mailSmsSender;
 
         public ViewProductController(AppDBContext context,
             ILogger<ViewProductController> logger,
             CartServices cartServices,
-            UserManager<AppUser> userManager)
+            UserManager<AppUser> userManager,
+            IEmailSmsSender emailSmsSender)
         {
             _context = context;
             _logger = logger;
             _cartServices = cartServices;
             _userManager = userManager;
+            _mailSmsSender = emailSmsSender;
         }
 
         [Route("/product/{categoryslug?}")]
@@ -58,6 +64,7 @@ namespace AppMVC.Areas.Blog.Controllers
                 .Include(p => p.ProductCategoryProducts)
                 .ThenInclude(pc => pc.CategoryProduct)
                 .Include(p => p.ProductImages)
+                .Where(p => p.Published)
                 .AsQueryable();
 
             products.OrderByDescending(p => p.DateUpdated);
@@ -199,5 +206,66 @@ namespace AppMVC.Areas.Blog.Controllers
 
             return RedirectToAction(nameof(ProductCart));
         }
+
+        [TempData]
+        public string StatusMessage { get; set; }
+
+        public async Task<IActionResult> Checkout()
+        {
+            var cartList = _cartServices.GetCartItems();
+
+            var DbProductQuery = _context.Products.Include(p => p.Seller);
+
+            foreach (var item in cartList)
+            {
+                // Send Mail
+                var storageProduct = await DbProductQuery                 
+                    .FirstOrDefaultAsync(p => p.ProductId == item.Product.ProductId);
+
+                try
+                {
+                    await _mailSmsSender.SendEmailAsync(
+                        storageProduct.Seller.Email,
+                        "Notify Product Has Bought",
+                        $"The Product {item.Product.Title} has bought - Quantity: {item.Quantity}, " +
+                        $"Please send product for customer soon!"
+                        );
+                } catch (Exception e)
+                {
+                    return Content("Cant Contact with seller - Please try agaist!");
+                }
+
+                // Handle In DB       
+                if (storageProduct == null)
+                {
+                    return NotFound();
+                }
+
+                var buyQuatiy = item.Quantity;
+                var inventoryQuatity = storageProduct.Quantity;
+
+                if (buyQuatiy > inventoryQuatity)
+                {
+                    return Content("The quantity of product that you buy is greater than inventory!");
+                }
+
+                inventoryQuatity -= buyQuatiy;
+                storageProduct.Quantity = inventoryQuatity;
+
+                if (inventoryQuatity == 0)
+                {
+                    storageProduct.Published = false;
+                }
+
+                await _context.SaveChangesAsync();
+            }
+
+            _cartServices.ClearAll();
+            StatusMessage = "Has Sent all Data";
+
+            return RedirectToAction(nameof(ProductCart));
+
+        }
+
     }
 }

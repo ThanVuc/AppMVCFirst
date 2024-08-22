@@ -47,7 +47,7 @@
                     <h5 class="card-title">@item.Title</h5>
                 </a>
                 <p class="card-text text-muted">@item.Description</p>
-                <p class="card-text text-danger text-center">Price: @item.Price</p>
+                <p class="card-text text-danger text-center">Price: @item.Price | Quatity: @item.Quantity</p>
                 <a class="btn btn-danger order" asp-controller="ViewProduct" asp-action="AddToCart" asp-route-productId="@item.ProductId" >Order</a>
                 <p class="card-text text-danger"><small class="text-muted">Author: <strong>@item.Seller.UserName</strong> | Updated: <strong>@item.DateUpdated.ToString("d")</strong></small></p>
 
