@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AppMVC.Models.Product.CategoryProduct>
+﻿@model IEnumerable<CategoryProduct>
 
 @{
     ViewData["Title"] = "Categories";
@@ -44,7 +44,7 @@
         <tr>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">
-                    @Html.Raw(prefix) @Html.DisplayFor(modelItem => item.Title)
+                    @(level) @Html.DisplayFor(modelItem => item.Title)
                 </a>
             </td>
             <td>
@@ -55,16 +55,16 @@
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
-
         // Recursion to go through all child
         // with each child, render + continue
-        if (item.CategoryChildren.Count > 0)
+        if (item.CategoryChildren?.Count > 0)
         {
             foreach (var child in item.CategoryChildren)
             {
                 await RenderCategory(child, level + 1);
             }
         }
+        
 
     }
 }

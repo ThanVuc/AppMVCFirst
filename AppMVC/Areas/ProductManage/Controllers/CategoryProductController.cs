@@ -31,14 +31,11 @@ namespace AppMVC.Areas.ProductManage.Controllers
         public async Task<IActionResult> Index()
         {
             //var appDBContext = _context.Categories.Include(c => c.ParentCategory);
-            var qr = (from c in _context.CategoryProducts select c)
+            var categories = await _context.CategoryProducts
                 .Include(c => c.ParentCategory)
-                .Include(c => c.CategoryChildren);
-
-            var categories = (await qr.ToListAsync())
+                .Include(c => c.CategoryChildren)
                 .Where(c => c.ParentCategory == null)
-                .ToList();
-
+                .ToListAsync();
 
             return View(categories);
         }

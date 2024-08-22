@@ -31,7 +31,7 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
-            RenderCategory(item);
+            await RenderCategory(item);
         }
     </tbody>
 </table>
@@ -58,13 +58,12 @@
 
         // Recursion to go through all child
         // with each child, render + continue
-        if (item.CategoryChildren.Count > 0)
+        if (item.CategoryChildren?.Count > 0)
         {
             foreach (var child in item.CategoryChildren)
             {
                 await RenderCategory(child, level + 1);
             }
         }
-
     }
 }

@@ -58,6 +58,12 @@
                 var productid = $(this).attr("data-productid");
                 var quantity = $("#quantity-" + productid).val();
 
+                if (quantity < 0){
+                    alert("Quantity of product have to greater than zero");
+                    location.reload();
+                    return;
+                }
+
                 $.ajax({
                     type: "POST",
                     url: "@Url.Action("UpdateCart")",

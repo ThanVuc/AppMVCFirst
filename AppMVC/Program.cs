@@ -25,7 +25,6 @@ services.AddDbContext<AppDBContext>(options =>
 {
     string connectString = configuration.GetConnectionString("MyBlogContext");
     options.UseSqlServer(connectString);
-    options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
 });
 
 //Session Config
