@@ -1,7 +1,9 @@
+using App.Utilities;
 using AppMVC.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Net;
+using AppMVC.Areas.ProductManage.Services;
 
 namespace AppMVC.Controllers
 {
@@ -15,7 +17,7 @@ namespace AppMVC.Controllers
         }
 
         public IActionResult Index()
-        {
+        {     
             return View();
         }
 
@@ -30,12 +32,40 @@ namespace AppMVC.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        [Route("StatusErrors")]
-        public IActionResult StatusErrors(int code)
+        [Route("showfile")]
+        public IActionResult ShowFile()
         {
-            var errName = (HttpStatusCode)code;
-            return View(model: errName);
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Files", "pic.jpg");
+            //var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Files", fileName);
+            _logger.LogInformation(filePath);
+            if (System.IO.File.Exists(filePath))
+            {
+                var fileStream = new FileStream(filePath, FileMode.Open);
+                return View(model: fileStream);
+            }
+            else
+            {
+                return View();
+            }
         }
+
+        [Route("downloadfile")]
+        public IActionResult Downloadfile()
+        {
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Files", "abc.txt");
+            //var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Files", fileName);
+            var fileName = Path.GetFileName(filePath);
+            if (System.IO.File.Exists(filePath))
+            {
+                var file = System.IO.File.ReadAllBytes(filePath);
+                return File(file, "application/octet-stream", fileName);
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+
 
     }
 }

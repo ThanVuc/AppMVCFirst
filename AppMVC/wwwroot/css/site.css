@@ -1,5 +1,5 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
@@ -19,4 +19,30 @@ html {
 
 body {
   margin-bottom: 60px;
+}
+
+.app-navbar{
+    background: black;
+}
+
+.app-navbar .text-color{
+    color: wheat !important;
+}
+
+.navbar-brand {
+    color: #be6fdc !important;
+}
+
+.Customer-Manage{
+    width: auto ;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+
+@media (max-width: 576px) {
+    .Customer-Manage {
+        justify-content: start;
+        margin-left: 5px;
+    }
 }

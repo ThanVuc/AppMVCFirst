@@ -1,0 +1,31 @@
+﻿@using AppMVC.Models.Blog
+@using AppMVC.Views.Shared.Component.CategorySideBar
+
+@model CategorySideBarData
+
+@{
+    var level = 0;
+}
+@if (Model.Categories.Count > 0)
+{
+    <ul>
+        @foreach(var category in Model.Categories)
+        {
+            var activeCss = (Model.slug == category.Slug) ? "active" : null;
+            var noParent = (category.ParentCategory == null) ? "noParent" : null;
+            <li>
+                <a class="@activeCss @noParent" asp-controller="ViewPost" asp-action="Index" asp-route-categoryslug="@category.Slug" >@category.Title</a>
+                @if (category.CategoryChildren?.Count > 0)
+                {
+                    @await Component.InvokeAsync("AppMVC.Views.Shared.Component.CategorySideBar.CategorySideBar",
+                                     new CategorySideBarData()
+                            {
+                                level = level+1,
+                                Categories = category.CategoryChildren.ToList(),
+                                slug = ViewBag.slug
+                            })
+                }
+            </li>
+        }
+    </ul>
+}

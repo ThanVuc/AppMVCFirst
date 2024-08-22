@@ -1,0 +1,132 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Microsoft.EntityFrameworkCore
+@model AppMVC.Models.Product.ProductModel
+@inject AppDBContext _context;
+@inject UserManager<AppUser> _userManager;
+
+@{
+    ViewData["Title"] = "Edit";
+    var categories = await _context.Categories.ToListAsync();
+    var summernoteSettingForDescription = new SummernoteSetting("Description");
+    var summernoteSettingForContent = new SummernoteSetting("Content",false);
+
+}
+@section head {
+    <link rel="stylesheet" href="~/css/Product/UploadProductImage.css" />
+}
+
+<h1>Edit</h1>
+
+<h4>Post</h4>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input asp-for="SellerId" type="hidden" value="@Model.SellerId" />
+            <input asp-for="ProductCategoryProducts" type="hidden" value="@Model.ProductCategoryProducts" />
+            <input name="id" value="@Model.ProductId" type="hidden" />
+            <input asp-for="ProductId" value="@Model.ProductId" type="hidden" />
+            <div class="form-group">
+                <label class="control-label">Categories</label>
+                <select multiple class="w-100" name="categoriesID" id="select-categories">
+                    @if (categories != null)
+                    {
+                        foreach (var category in categories)
+                        {
+                            if (Model.ProductCategoryProducts != null && Model.ProductCategoryProducts.Any(pc => pc.CategoryID == category.Id))
+                            {
+                                <option selected value="@category.Id">@category.Title</option>
+                            }
+                            else
+                            {
+                                <option value="@category.Id">@category.Title</option>
+                            }
+                        }
+                    }
+                    
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label">Title</label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div>
+                <hr />
+                <input class="collapse"
+                       type="file"
+                       id="selectfileupload"
+                       onchange="AutoUploadFile()"
+                       data-id="@Model.ProductId"
+                       data-url="@Url.Action("UploadImageAPI")" />
+
+                <span class="btn btn-primary" onclick="ClickButtonUpload()">Uploads</span>
+
+
+                <div id="box-image-upload" class="d-flex flex-wrap image-upload"
+                     data-deleteUrl="@Url.Action("DeleteImage")"
+                     data-url="@Url.Action("ListImage")"
+                     data-id="@Model.ProductId">
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea id="Description" asp-for="Description" class="form-control" rows="2"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Slug" class="control-label"></label>
+                <input asp-for="Slug" class="form-control" />
+                <span asp-validation-for="Slug" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Content" class="control-label"></label>
+                <textarea id="Content" asp-for="Content" class="form-control" rows="5"></textarea>
+                <span asp-validation-for="Content" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Published" /> @Html.DisplayNameFor(model => model.Published)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Edit" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+
+    <script src="~/lib/multiple-select/multiple-select.min.js"></script>
+    <link rel="stylesheet" href="~/lib/multiple-select/multiple-select.min.css" />
+    <script src="/js/UploadPhoto/PhotoHandle.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#select-categories").multipleSelect({
+                selectAll: false,
+                keepOpen: false,
+                isOpen: false,
+            });
+            LoadImage();
+        })
+
+        
+       
+        
+
+    </script>
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <partial name="_Summernote" model="@summernoteSettingForDescription" />
+    <partial name="_Summernote" model="@summernoteSettingForContent" />
+}

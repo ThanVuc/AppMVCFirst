@@ -1,12 +1,74 @@
-﻿@using AppMVC.Areas.ProductManage.Models
-@model List<Product>
+﻿@model IEnumerable<AppMVC.Models.Product.ProductModel>
+
 @{
-    ViewData["Title"] = "Products";
+    ViewData["Title"] = "Posts";
 }
 
-<ul class="list-group">
-    @foreach (var product in Model)
-    {
-        <li asp-action="#" class="list-group-item">@product.ProductName</li>
-    }
-</ul>
+@section head {
+    <style>
+        a{
+            text-decoration: none;
+        }
+    </style>
+}
+
+<partial name="_StatusMessage" />
+<h1>@ViewData["Title"]</h1>
+<strong>Total Post: @ViewBag.PagingModel.TotalItem</strong>
+<p>
+    <a class="btn btn-primary btn-sm" asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Published)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Seller)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateCreated)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateUpdated)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ProductId">
+                        @Html.DisplayFor(modelItem => item.Title)
+                        <br></br>
+                        <small>@string.Join(",", item.ProductCategoryProducts.Select(pc => pc.CategoryProduct.Title))</small>
+                </a>  
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Published)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Seller.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateCreated.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateUpdated.Date)
+            </td>
+            <td>
+                <a asp-action="Detail" asp-route-id="@item.ProductId">Detail</a>
+                <a asp-action="Delete" asp-route-id="@item.ProductId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+
+<partial name="_PagingPartial" model="@ViewBag.PagingModel" />

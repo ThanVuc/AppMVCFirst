@@ -1,9 +1,29 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AppMVC.Models.Blog;
+using AppMVC.Models.Contact;
+using AppMVC.Models.Product;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using System.Data;
 
 namespace AppMVC.Models
 {
-    public class AppDBContext : DbContext
+    public class AppDBContext : IdentityDbContext<AppUser>
     {
+
+        public DbSet<ContactModel> Contacts { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Post> Posts { get; set; }
+        public DbSet<PostCategory> PostCategories { get; set; }
+        public DbSet<CategoryProduct> CategoryProducts { get; set; }
+        public DbSet<ProductModel> Products { get; set; }
+        public DbSet<ProductCategoryProduct> ProductCategoryProducts { get; set; }
+        public DbSet<ProductImage> ProductImages { get; set; }
+
+        // Cart
+        public DbSet<Cart> Carts { get; set; }
+        public DbSet<CartItem> CartItems { get; set; }
+        public DbSet<Bill> Bills { get; set; }
+
         public AppDBContext(DbContextOptions options) : base(options)
         {
         }
@@ -17,6 +37,68 @@ namespace AppMVC.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            foreach (var entityType in modelBuilder.Model.GetEntityTypes())
+            {
+                var tableName = entityType.GetTableName();
+                if (tableName.StartsWith("AspNet"))
+                {
+                    entityType.SetTableName(tableName.Substring(6));
+                }
+            }
+
+            modelBuilder.Entity<Category>(entity =>
+            {
+                entity.HasIndex(c => c.Slug)
+                .IsUnique();
+            });
+
+            modelBuilder.Entity<Post>(entity =>
+            {
+                entity.HasIndex(p => p.Slug)
+                .IsUnique();
+            });
+
+            modelBuilder.Entity<PostCategory>(entity =>
+            {
+                entity.HasKey(pc => new { pc.PostID, pc.CategoryID });
+            });
+
+            modelBuilder.Entity<CategoryProduct>(entity =>
+            {
+                entity.HasIndex(c => c.Slug)
+                .IsUnique();
+            });
+
+            modelBuilder.Entity<ProductModel>(entity =>
+            {
+                entity.HasIndex(p => p.Slug)
+                .IsUnique();
+
+                entity.HasOne(p => p.Seller)
+                .WithMany()
+                .HasForeignKey(p => p.SellerId)
+                .OnDelete(DeleteBehavior.NoAction);
+            });
+
+            modelBuilder.Entity<ProductCategoryProduct>(entity =>
+            {
+                entity.HasKey(pc => new { pc.ProductID, pc.CategoryID });
+            });
+
+            //Cart
+            modelBuilder.Entity<Bill>(entity =>
+            {
+                entity.HasIndex(b => new { b.ProductId, b.CustomerId })
+                .IsUnique();
+            });
+
+            modelBuilder.Entity<CartItem>(entity =>
+            {
+                entity.HasIndex(cI => new { cI.ProductId, cI.CartId })
+                .IsUnique();
+            });
+
         }
     }
 }

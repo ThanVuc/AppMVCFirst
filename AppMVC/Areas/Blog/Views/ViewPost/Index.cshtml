@@ -1,0 +1,53 @@
+﻿@model IList<Post>
+@using AppMVC.Views.Shared.Component.CategorySideBar
+@{
+    Category category = ViewBag.category;
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-action="Index" asp-route-categoryslug="" >Home</a></li>
+
+        @if (category != null)
+        {
+            @foreach (var cate in category.GetParentCategories())
+            {
+                <li class="breadcrumb-item"><a asp-action="Index" asp-route-categoryslug="@cate.Slug" >@cate.Title</a></li>
+            }
+        }
+    </ol>
+</nav>
+
+@if (category != null)
+{
+    <div class="text-center show-category">
+        <h5>@category.Title</h5>
+        <p>@category.Content</p>
+    </div>
+}
+
+
+@foreach (var item in Model)
+{
+    <div class="card mt-3" style="max-width: 100%;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="/image/no-image.png" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <a asp-controller="ViewPost" asp-action="Detail" asp-route-postslug="@item.Slug">
+                        <h5 class="card-title">@item.Title</h5>
+                    </a>
+                    <p class="card-text text-muted">@item.Description</p>
+                    <p class="card-text text-danger"><small class="text-muted">Author: <strong>@item.Author.UserName</strong> | Updated: <strong>@item.DateUpdated.ToString("d")</strong></small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="paging-position">
+    <partial name="_PagingPartial" model="@ViewBag.PagingModel" />
+</div>
+

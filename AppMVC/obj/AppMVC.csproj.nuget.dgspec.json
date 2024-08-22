@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Asp.Net\\MVC\\AppMVCFirst\\AppMVC\\AppMVC.csproj": {}
+    "D:\\Asp.Net\\MVC\\AppMVCFirst\\appmvc\\AppMVC.csproj": {}
   },
   "projects": {
-    "D:\\Asp.Net\\MVC\\AppMVCFirst\\AppMVC\\AppMVC.csproj": {
+    "D:\\Asp.Net\\MVC\\AppMVCFirst\\appmvc\\AppMVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Asp.Net\\MVC\\AppMVCFirst\\AppMVC\\AppMVC.csproj",
+        "projectUniqueName": "D:\\Asp.Net\\MVC\\AppMVCFirst\\appmvc\\AppMVC.csproj",
         "projectName": "AppMVC",
-        "projectPath": "D:\\Asp.Net\\MVC\\AppMVCFirst\\AppMVC\\AppMVC.csproj",
+        "projectPath": "D:\\Asp.Net\\MVC\\AppMVCFirst\\appmvc\\AppMVC.csproj",
         "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "D:\\Asp.Net\\MVC\\AppMVCFirst\\AppMVC\\obj\\",
+        "outputPath": "D:\\Asp.Net\\MVC\\AppMVCFirst\\appmvc\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -46,6 +46,18 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Aspose.Imaging": {
+              "target": "Package",
+              "version": "[23.12.0, )"
+            },
+            "Bogus": {
+              "target": "Package",
+              "version": "[35.5.1, )"
+            },
+            "EntityFramework": {
+              "target": "Package",
+              "version": "[6.5.1, )"
+            },
             "MailKit": {
               "target": "Package",
               "version": "[4.6.0, )"
@@ -96,17 +108,27 @@
               "target": "Package",
               "version": "[8.0.6, )"
             },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.6, )"
+            },
+            "Microsoft.Extensions.Caching.Memory": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
             "Microsoft.Extensions.Logging.Console": {
               "target": "Package",
               "version": "[8.0.0, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[8.0.2, )"
+              "version": "[8.0.3, )"
             },
             "Microsoft.VisualStudio.Web.CodeGenerators.Mvc": {
               "target": "Package",
-              "version": "[9.0.0-preview.4.24271.3, )"
+              "version": "[8.0.3, )"
             },
             "MimeKit": {
               "target": "Package",
@@ -119,6 +141,14 @@
             "System.Data.SqlClient": {
               "target": "Package",
               "version": "[4.8.6, )"
+            },
+            "elFinder.NetCore": {
+              "target": "Package",
+              "version": "[1.4.0, )"
+            },
+            "jQuery": {
+              "target": "Package",
+              "version": "[3.7.1, )"
             }
           },
           "imports": [

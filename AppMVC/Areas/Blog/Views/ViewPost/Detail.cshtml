@@ -1,0 +1,54 @@
+﻿@using AppMVC.Views.Shared.Component.CategorySideBar
+@model Post
+
+@{
+    var listCategory = ViewBag.categories as List<Category>;
+    var category = ViewBag.category as Category;
+    string authorName = Model.Author == null ? "Admin" : Model.Author.Email;
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-action="Index" asp-route-categoryslug="">Home</a></li>
+
+        @if (category != null)
+        {
+            @foreach (var cate in category.GetParentCategories())
+            {
+                <li class="breadcrumb-item"><a asp-action="Index" asp-route-categoryslug="@cate.Slug">@cate.Title</a></li>
+            }
+        }
+    </ol>
+</nav>
+
+
+<div class="detail">
+    <div class="header" >
+        <h4> @Model.Title</h4>
+        <p>@Model.Description</p>
+        <info>
+            <p>Author: <strong>@authorName</strong> | Update: @Model.DateUpdated.ToString("d")</p>
+            
+            @if (Model.PostCategories.Count > 0)
+            {
+                <p>Categories: </p>
+
+                @foreach (var cate in Model.PostCategories)
+                {
+
+                    <p>@cate.Category.Title</p>
+                }
+            }
+            
+        </info>
+    </div>
+    
+    <div class="content">
+        <p>
+            @Model.Content
+        </p>
+    </div>
+   
+</div>
+
+

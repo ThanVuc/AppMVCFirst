@@ -1,0 +1,83 @@
+﻿body {
+    background-color: black;
+    --sb-word-color: #25d8f1;
+    --sb-hyperlink-color: #b2f609;
+    --sb-hover-opacity: 0.8;
+    color: var(--word-color);
+}
+
+.sidebar {
+    border-right: 5px solid gray;
+}
+
+    .sidebar h3 {
+        color: var(--sb-word-color);
+    }
+
+.sidebar ul, li {
+    list-style: none;
+}
+
+.sidebar ul li .noParent {
+    font-weight: bold;
+}
+
+    .sidebar a {
+        color: var(--sb-hyperlink-color);
+        text-decoration: none;
+    }
+
+        .sidebar a:hover {
+            color: var(--sb-hyperlink-color);
+            opacity: var(--sb-hover-opacity);
+        }
+
+    .sidebar .active {
+        color: #ccf5f5 !important;
+    }
+
+    .sidebar .title {
+        padding-bottom: 5px;
+        border-bottom: 2px solid aquamarine;
+    }
+
+        .sidebar .title .cate-index {
+            color: var(--sb-word-color);
+        }
+
+.post .show-category {
+    color: #75e8f8;
+    border-bottom: 2px dashed gray;
+}
+
+.post .card a{
+    text-decoration: none;
+    color: #2d8693;
+}
+
+.post .detail h4 {
+    color: #ffd800;
+    text-align: center;
+}
+
+.post .detail p {
+    color: #ebebeb;
+    text-align: center;
+}
+
+.post .detail .header {
+    border-bottom: 1px solid gray;
+}
+
+.post .detail .content {
+    margin-top: 5px;
+}
+
+
+
+.post .paging-position{
+    margin-top: 10px;
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+}

@@ -1,0 +1,35 @@
+﻿@using AppMVC.Views.Shared.Component.CategorySideBar
+@using Microsoft.EntityFrameworkCore
+@inject AppDBContext _context;
+@{
+    Layout = "_Layout";
+    var listCategory = _context.Categories
+                .Include(c => c.CategoryChildren)
+                .AsEnumerable()
+                .Where(c => c.ParentCategory == null)
+                .ToList();
+}
+
+@section head{
+    <link rel="stylesheet" href="~/css/viewblog/blog_layout.css" />
+}
+
+<div class="">
+    <div class="row">
+        <div class="col-md-3 sidebar">
+            <h3 class="text-center title" >
+                <a class="cate-index" asp-controller="ViewPost" asp-route-categoryslug="" asp-action="Index">Index Of Category</a>
+            </h3>
+            @await Component.InvokeAsync("AppMVC.Views.Shared.Component.CategorySideBar.CategorySideBar",
+                     new CategorySideBarData()
+            {
+                level = 0,
+                Categories = listCategory,
+                slug = ViewBag.slug
+            })
+        </div>
+        <div class="col-md-9 post">
+            @RenderBody()
+        </div>
+    </div>
+</div>

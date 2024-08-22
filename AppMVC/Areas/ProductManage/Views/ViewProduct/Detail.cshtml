@@ -1,0 +1,65 @@
+﻿@using AppMVC.Views.Shared.Component.CategorySideBar
+@model ProductModel
+
+@{
+    var listCategory = ViewBag.categories as List<CategoryProduct>;
+    var category = ViewBag.category as CategoryProduct;
+    string sellerName = Model.Seller == null ? "Admin" : Model.Seller.Email;
+}
+
+<link rel="stylesheet" href="~/css/Product/ViewProduct.css" />
+
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-action="Index" asp-route-categoryslug="">Home</a></li>
+
+        @if (category != null)
+        {
+            @foreach (var cate in category.GetParentCategories())
+            {
+                <li class="breadcrumb-item"><a asp-action="Index" asp-route-categoryslug="@cate.Slug">@cate.Title</a></li>
+            }
+        }
+    </ol>
+</nav>
+
+
+<div class="detail">
+    <div class="header" >
+        <h4> @Model.Title</h4>
+        <p>@Model.Description</p>
+        <info>
+            <p>Author: <strong>@sellerName</strong> | Update: @Model.DateUpdated.ToString("d")</p>
+            <p>Quantity: @Model.Quantity</p>
+            @if (Model.ProductCategoryProducts.Count > 0)
+            {
+                <p>Categories: </p>
+
+                @foreach (var productCategory in Model.ProductCategoryProducts)
+                {
+                    <p>@productCategory.CategoryProduct.Title</p>
+                }
+            }
+            
+        </info>
+    </div>
+    
+    <div class="content">
+        <div class="img" >
+            @if (Model.ProductImages.Any())
+            {
+                foreach (var imgPath in Model.ProductImages)
+                {
+                    <img src="/image/product/@imgPath.FileName" />
+                }
+            }
+        </div>
+        <p>
+            @Model.Content
+        </p>
+    </div>
+   
+</div>
+
+

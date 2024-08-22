@@ -1,13 +1,14 @@
-﻿@model string
-
-@{
-    var message = Model;
+﻿@{
+    var mgs = TempData["StatusMessage"] as string;
 }
 
-@if (!string.IsNullOrEmpty(message))
+@if (!String.IsNullOrEmpty(mgs))
 {
-    <div class="alert alert-warning" role="alert">
-        @Model
+    var statusMessageClass = mgs.StartsWith("Error") ? "danger" : "success";
+    <div class="alert alert-@statusMessageClass alert-dismissible fade show" role="alert">
+        <strong>@mgs!</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
+
 }
 

@@ -20,3 +20,54 @@
 @Url.Link("product",new { action = "Index", controller = "Product", id = "123", name = "sinh" })
 @Url.RouteUrl("product", new { area = "ProductManage" ,action = "Index", controller = "Product", id = "123", name = "sinh" })
 
+<textarea id="summernote"></textarea>
+
+@{
+    var sumernote = new SummernoteSetting("summernote",true);
+}
+
+@section Scripts {
+    <partial name="_Summernote" model="@sumernote" />
+
+}
+
+
+
+
+
+
+
+@*
+    @section Scripts {
+
+    <link rel="stylesheet" href = "~/lib/summernote/summernote-lite.min.css" />
+    <script src="~/lib/summernote/summernote-lite.min.js" ></script>
+
+    <script>
+        $(document).ready(function(){
+            $('#summernote').summernote({
+                placeholder: "",
+                height: 120,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['fullscreen', 'codeview', 'help']]
+                ]
+            });
+        })
+
+
+    </script>
+
+}
+
+*@
+
+
+
+
+

@@ -1,0 +1,63 @@
+﻿@model IList<ProductModel>
+@using AppMVC.Views.Shared.Component.CategorySideBar
+@{
+    CategoryProduct category = ViewBag.category;
+}
+
+<link rel="stylesheet" href="~/css/Product/ViewProduct.css" />
+
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-action="Index" asp-route-categoryslug="" >Home</a></li>
+
+        @if (category != null)
+        {
+            @foreach (var cate in category.GetParentCategories())
+            {
+                <li class="breadcrumb-item"><a asp-action="Index" asp-route-categoryslug="@cate.Slug" >@cate.Title</a></li>
+            }
+        }
+    </ol>
+</nav>
+
+@if (category != null)
+{
+    <div class="text-center show-category">
+        <h5>@category.Title</h5>
+        <p>@category.Content</p>
+    </div>
+}
+
+<div class="product-card">
+    @foreach (var item in Model)
+    {
+        string imagePath = "/image/no-image.png";
+        if (item.ProductImages.Any())
+        {
+            imagePath = "/image/product/" + item.ProductImages.First().FileName;
+        }
+
+
+        var image = item.ProductImages.FirstOrDefault();
+        <div class="card" >
+            <img src="@imagePath" class="card-img-top" alt="...">
+            <div class="card-body">
+                <a asp-controller="ViewProduct" asp-action="Detail" asp-route-productslug="@item.Slug">
+                    <h5 class="card-title">@item.Title</h5>
+                </a>
+                <p class="card-text text-muted">@item.Description</p>
+                <p class="card-text text-danger text-center">Price: @item.Price</p>
+                <a class="btn btn-danger order" asp-controller="ViewProduct" asp-action="AddToCart" asp-route-productId="@item.ProductId" >Order</a>
+                <p class="card-text text-danger"><small class="text-muted">Author: <strong>@item.Seller.UserName</strong> | Updated: <strong>@item.DateUpdated.ToString("d")</strong></small></p>
+
+            </div>
+        </div>
+        
+    }
+</div>
+
+<div class="paging-position">
+    <partial name="_PagingPartial" model="@ViewBag.PagingModel" />
+</div>
+
