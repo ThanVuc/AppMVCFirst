@@ -80,3 +80,7 @@
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     <partial name="_Summernote" model="@summernoteSetting" />
 }
+
+@section sidebar {
+    @Html.Raw(_sideBarServices.RenderHtml(Url))
+}

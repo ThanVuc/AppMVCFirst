@@ -1,6 +1,7 @@
 ﻿@model AppMVC.Models.Contact.ContactModel
 
 @{
+    Layout = "_Layout";
     ViewData["Title"] = "Send Contact";
 }
 
@@ -49,6 +50,8 @@
         </form>
     </div>
 </div>
+
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

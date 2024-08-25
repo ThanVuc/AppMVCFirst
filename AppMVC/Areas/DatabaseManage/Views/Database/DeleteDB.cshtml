@@ -11,3 +11,7 @@
 </form>
 
 <a asp-action="Index">Database Infomations</a>
+
+@section sidebar {
+    @Html.Raw(_sideBarServices.RenderHtml(Url))
+}

@@ -60,3 +60,7 @@
         });
     </script>
 }
+
+@section sidebar {
+    @Html.Raw(_sideBarServices.RenderHtml(Url))
+}

@@ -97,7 +97,7 @@ namespace App.Areas.Identity.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty,"Không đăng nhập được.");
+                    ModelState.AddModelError(string.Empty,"Please, Check your username or password.");
                     return View(model);
                 }
             }
@@ -231,7 +231,7 @@ namespace App.Areas.Identity.Controllers
             returnUrl ??= Url.Content("~/");
             if (remoteError != null)
             {
-                ModelState.AddModelError(string.Empty, $"Lỗi sử dụng dịch vụ ngoài: {remoteError}");
+                ModelState.AddModelError(string.Empty, $"External Services Errors: {remoteError}");
                 return View(nameof(Login));
             }
             var info = await _signInManager.GetExternalLoginInfoAsync();
@@ -321,7 +321,7 @@ namespace App.Areas.Identity.Controllers
                             info => user1 (mail1@abc.com)
                                  => user2 (mail2@abc.com)
                         */
-                        ModelState.AddModelError(string.Empty, "Không liên kết được tài khoản, hãy sử dụng email khác");
+                        ModelState.AddModelError(string.Empty, "Cannot link with account, please use another email");
                         return View();
                     }
                 }
@@ -329,7 +329,7 @@ namespace App.Areas.Identity.Controllers
 
                 if ((externalEmailUser != null) && (registeredUser == null))
                 {
-                    ModelState.AddModelError(string.Empty, "Không hỗ trợ tạo tài khoản mới - có email khác email từ dịch vụ ngoài");
+                    ModelState.AddModelError(string.Empty, "Not support create new account - Have another email to External Services");
                     return View();                    
                 }
 
@@ -355,7 +355,7 @@ namespace App.Areas.Identity.Controllers
                     }
                     else
                     {
-                        ModelState.AddModelError(string.Empty,"Không tạo được tài khoản mới");
+                        ModelState.AddModelError(string.Empty,"Cannot Create new Account");
                         return View();   
                     }
                 }           
@@ -637,7 +637,7 @@ namespace App.Areas.Identity.Controllers
             }
             else
             {
-                ModelState.AddModelError(string.Empty, "Mã sai.");
+                ModelState.AddModelError(string.Empty, "Wrong Code.");
                 return View(model);
             }
         }
@@ -676,7 +676,7 @@ namespace App.Areas.Identity.Controllers
             }
             else
             {
-                ModelState.AddModelError(string.Empty, "Sai mã phục hồi.");
+                ModelState.AddModelError(string.Empty, "Wrong Recovery Code.");
                 return View(model);
             }
         }

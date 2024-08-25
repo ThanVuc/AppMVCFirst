@@ -40,6 +40,10 @@
     data-id="@product.ProductId">
 </div>
 
+@section sidebar {
+    @Html.Raw(_sideBarServices.RenderHtml(Url))
+}
+
 @section Scripts {
     <script src="/js/UploadPhoto/PhotoHandle.js"></script>
 
@@ -50,3 +54,4 @@
         })
     </script>
 }
+

@@ -42,3 +42,6 @@
     <a class="btn btn-primary ms-2" asp-action="SeedOriginData">Seed Data</a>
 </div>
 
+@section sidebar {
+    @Html.Raw(_sideBarServices.RenderHtml(Url))
+}

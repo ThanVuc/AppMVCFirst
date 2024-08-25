@@ -12,12 +12,6 @@
             <div class="item-size">
                 <button class="btn btn-primary" asp-area="Administrator" asp-controller="Administrator" asp-action="Index"><i class="fa-solid fa-gear"></i> Admin</button>
             </div>
-            <div class="item-size">
-                @if (Engine.FindView(ViewContext, "_MenuManagePartial", false).Success)
-                {
-                    @await Html.PartialAsync("_MenuManagePartial")
-                }
-            </div>
             <div class="item-size pt-1">
                 @if (Engine.FindView(ViewContext, "_ShoppingCartPartial", false).Success)
                 {
@@ -28,14 +22,16 @@
                 <i class="fa-solid fa-user"></i>
                 <p class="item-size username">@(await UserManager.GetUserAsync(User))</p>
             </a>
-            <input type="submit" class="btn btn-outline-primary item-size logout" value="Sign Out" />
+            <input type="submit" class="btn btn-outline-primary item-size logout" value="Logout" />
         </div>
     </form>
 }
 else
 {
     <div class="log-if">
-        <a class="btn btn-outline-primary item-size" asp-area="Identity" asp-controller="Account" asp-action="Login">Sign In</a>
-        <a class="btn btn-outline-primary item-size" asp-area="Identity" asp-controller="Account" asp-action="Register">Sign Up</a>
+        <a class="btn btn-outline-primary item-size" asp-area="Identity" asp-controller="Account" asp-action="Login">
+            <i class="fa-solid fa-right-to-bracket"></i>
+            Login
+        </a>
     </div>
 }

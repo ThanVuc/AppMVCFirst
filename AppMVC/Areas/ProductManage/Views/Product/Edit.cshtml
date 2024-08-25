@@ -101,6 +101,10 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
+@section sidebar {
+    @Html.Raw(_sideBarServices.RenderHtml(Url))
+}
+
 @section Scripts {
 
     <script src="~/lib/multiple-select/multiple-select.min.js"></script>

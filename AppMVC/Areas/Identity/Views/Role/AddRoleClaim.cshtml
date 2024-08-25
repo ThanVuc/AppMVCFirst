@@ -30,6 +30,9 @@
     </div>
 </div>
 
+@section sidebar {
+    @Html.Raw(_sideBarServices.RenderHtml(Url))
+}
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

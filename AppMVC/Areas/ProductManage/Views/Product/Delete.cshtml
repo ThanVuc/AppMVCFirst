@@ -37,3 +37,7 @@
         <a asp-action="Index">Back to List</a>
     </form>
 </div>
+
+@section sidebar {
+    @Html.Raw(_sideBarServices.RenderHtml(Url))
+}

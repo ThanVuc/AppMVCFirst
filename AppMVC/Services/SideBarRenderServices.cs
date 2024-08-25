@@ -108,7 +108,7 @@ namespace AppMVC.Services
                 new SideBarItem()
             {
                 Area = "Blog",
-                Controller = "Post",
+                Controller = "Posts",
                 Action = "Index",
                 Title = "Post",
                 FontAweasome = "fa-solid fa-envelopes-bulk",

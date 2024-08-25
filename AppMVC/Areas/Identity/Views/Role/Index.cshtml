@@ -34,3 +34,7 @@
         </tr>
     }
 </table>
+
+@section sidebar {
+    @Html.Raw(_sideBarServices.RenderHtml(Url))
+}

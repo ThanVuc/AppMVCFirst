@@ -11,6 +11,8 @@
     <script src="/lib/font-awesome/js/all.js" crossorigin="anonymous"></script>
     <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="/js/scripts.js"></script>
+    @RenderSection("head", false)
+
     <script>
         if (window.history.replaceState) {
             window.history.replaceState(null, null, window.location.href);
@@ -74,5 +76,7 @@
             </footer>
         </div>
     </div>
+    @await RenderSectionAsync("Scripts", required: false)
+
 </body>
 </html>

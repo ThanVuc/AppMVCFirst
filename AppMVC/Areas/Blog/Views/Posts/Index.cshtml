@@ -70,5 +70,8 @@
     </tbody>
 </table>
 
+@section sidebar {
+    @Html.Raw(_sideBarServices.RenderHtml(Url))
+}
 
 <partial name="_PagingPartial" model="@ViewBag.PagingModel" />

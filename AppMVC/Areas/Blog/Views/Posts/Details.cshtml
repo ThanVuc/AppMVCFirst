@@ -57,3 +57,7 @@
     <a asp-action="Edit" asp-route-id="@Model?.PostId">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
+
+@section sidebar {
+    @Html.Raw(_sideBarServices.RenderHtml(Url))
+}
