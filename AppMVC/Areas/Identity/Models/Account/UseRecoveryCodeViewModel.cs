@@ -8,8 +8,8 @@ namespace App.Areas.Identity.Models.AccountViewModels
     public class UseRecoveryCodeViewModel
     {
         
-        [Required(ErrorMessage = "Phải nhập {0}")]
-        [Display(Name = "Nhập mã phục hồi đã lưu")]
+        [Required(ErrorMessage = "Require {0}")]
+        [Display(Name = "Type the Recovery Code has saved")]
         public string Code { get; set; }
 
         public string ReturnUrl { get; set; }

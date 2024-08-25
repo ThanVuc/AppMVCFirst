@@ -7,7 +7,7 @@
       "destination": "wwwroot/lib/multiple-select"
     },
     {
-      "library": "font-awesome@6.5.2",
+      "library": "font-awesome@6.3.0",
       "destination": "wwwroot/lib/font-awesome"
     },
     {

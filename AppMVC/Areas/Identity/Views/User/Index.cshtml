@@ -1,16 +1,16 @@
 @model UserListModel
 @{
-    ViewData["Title"] = "Danh sách các thành viên";
+    ViewData["Title"] = "List of Users";
 }
 <h2>@ViewData["Title"]</h2>
 <partial name="_StatusMessage"></partial>
-<p>Tổng số thành viên: @Model.totalUsers</p>
+<p>Total of Member: @Model.totalUsers</p>
 
 <table class="table">
     <tr>
-        <th>Tên user</th>
-        <th>Vai trò (role)</th>
-        <th>Tác vụ</th>
+        <th>Username</th>
+        <th>Role</th>
+        <th>Task</th>
     </tr>
     @foreach (var user in Model.users)
     {
@@ -19,7 +19,7 @@
             <td>
                 @if (string.IsNullOrEmpty(user.RoleNames))
                 {
-                    <a class="text-dark" asp-action="AddRole" asp-route-id="@user.Id">+ Thêm roles</a>
+                    <a class="text-dark" asp-action="AddRole" asp-route-id="@user.Id">+ Add roles</a>
                 }
                 else
                 {
@@ -27,7 +27,7 @@
                 }
             </td>
             <td>
-                <a class="btn btn-success btn-sm" asp-action="SetPassword" asp-route-id="@user.Id">Đặt mật khẩu</a>
+                <a class="btn btn-success btn-sm" asp-action="SetPassword" asp-route-id="@user.Id">Set Password</a>
             </td>
         </tr>
     }

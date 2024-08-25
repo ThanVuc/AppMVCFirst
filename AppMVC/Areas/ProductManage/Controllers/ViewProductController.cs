@@ -232,7 +232,7 @@ namespace AppMVC.Areas.Blog.Controllers
                         );
                 } catch (Exception e)
                 {
-                    return Content("Cant Contact with seller - Please try agaist!");
+                    return Content($"Cant Contact with seller({e.Message}) - Please try agaist!");
                 }
 
                 // Handle In DB       

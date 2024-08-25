@@ -6,9 +6,9 @@ namespace App.Areas.Identity.Models.RoleViewModels
 {
   public class EditRoleModel
     {
-        [Display(Name = "Tên của role")]
-        [Required(ErrorMessage = "Phải nhập {0}")]
-        [StringLength(256, MinimumLength = 3, ErrorMessage = "{0} phải dài {2} đến {1} ký tự")]
+        [Display(Name = "Role Name")]
+        [Required(ErrorMessage = "Require {0}")]
+        [StringLength(256, MinimumLength = 3, ErrorMessage = "{0} Length: {2} - {1} chars")]
         public string Name { get; set; }
         public List<IdentityRoleClaim<string>> Claims { get; set; }
 

@@ -1,0 +1,43 @@
+﻿@inject SideBarRenderServices _sideBarServices
+@{
+    var sideBarItem = new SideBarItem()
+            {
+                Title = "ProductManage",
+                FontAweasome = "fa-solid fa-blog",
+                Type = TypeOfSideBar.NavBar,
+                CollapseId = "ProductCollapse",
+                Items = new List<SideBarItem>()
+                {
+                    new SideBarItem()
+            {
+                Area = "ProductManage",
+                Controller = "CategoryProduct",
+                Action = "Index",
+                Title = "Category Product",
+                FontAweasome = "fa-solid fa-layer-group",
+                Type = TypeOfSideBar.NavBar,
+                Items = null
+            },
+                new SideBarItem()
+            {
+                Area = "ProductManage",
+                Controller = "Product",
+                Action = "Index",
+                Title = "Product",
+                FontAweasome = "fa-brands fa-product-hunt",
+                Type = TypeOfSideBar.NavBar,
+                Items = null
+            }
+                }
+            };
+}
+
+@{ 
+    ViewData["Title"] = "Administrator";
+}
+
+@section sidebar{
+    @Html.Raw(_sideBarServices.RenderHtml(Url))
+}
+
+

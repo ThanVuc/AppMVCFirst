@@ -25,6 +25,10 @@
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
+      "Id": "D:\\Asp.Net\\MVC\\AppMVCFirst\\appmvc\\wwwroot\\css\\styles.css",
+      "PackagePath": "staticwebassets\\css\\styles.css"
+    },
+    {
       "Id": "D:\\Asp.Net\\MVC\\AppMVCFirst\\appmvc\\wwwroot\\css\\viewblog\\blog_layout.css",
       "PackagePath": "staticwebassets\\css\\viewblog\\blog_layout.css"
     },
@@ -35,6 +39,10 @@
     {
       "Id": "D:\\Asp.Net\\MVC\\AppMVCFirst\\appmvc\\wwwroot\\js\\UploadPhoto\\PhotoHandle.js",
       "PackagePath": "staticwebassets\\js\\UploadPhoto\\PhotoHandle.js"
+    },
+    {
+      "Id": "D:\\Asp.Net\\MVC\\AppMVCFirst\\appmvc\\wwwroot\\js\\scripts.js",
+      "PackagePath": "staticwebassets\\js\\scripts.js"
     },
     {
       "Id": "D:\\Asp.Net\\MVC\\AppMVCFirst\\appmvc\\wwwroot\\js\\site.js",

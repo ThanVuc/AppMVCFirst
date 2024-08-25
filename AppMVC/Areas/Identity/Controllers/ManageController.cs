@@ -45,12 +45,12 @@ namespace App.Areas.Identity.Controllers
         public async Task<IActionResult> Index(ManageMessageId? message = null)
         {
             ViewData["StatusMessage"] =
-                message == ManageMessageId.ChangePasswordSuccess ? "Đã thay đổi mật khẩu."
-                : message == ManageMessageId.SetPasswordSuccess ? "Đã đặt lại mật khẩu."
+                message == ManageMessageId.ChangePasswordSuccess ? "Passowrd Changed."
+                : message == ManageMessageId.SetPasswordSuccess ? "Passowrd Reset."
                 : message == ManageMessageId.SetTwoFactorSuccess ? "Your two-factor authentication provider has been set."
-                : message == ManageMessageId.Error ? "Có lỗi."
-                : message == ManageMessageId.AddPhoneSuccess ? "Đã thêm số điện thoại."
-                : message == ManageMessageId.RemovePhoneSuccess ? "Đã bỏ số điện thoại."
+                : message == ManageMessageId.Error ? "Error occur."
+                : message == ManageMessageId.AddPhoneSuccess ? "Phone Number has added."
+                : message == ManageMessageId.RemovePhoneSuccess ? "Phone Number has remove."
                 : "";
 
             var user = await GetCurrentUserAsync();

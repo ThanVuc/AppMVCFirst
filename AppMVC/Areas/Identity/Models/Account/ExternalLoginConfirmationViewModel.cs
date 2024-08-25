@@ -11,8 +11,8 @@ namespace App.Areas.Identity.Models.AccountViewModels
 {
     public class ExternalLoginConfirmationViewModel
     {
-        [Required(ErrorMessage = "Phải nhập {0}")]
-        [EmailAddress(ErrorMessage="Phải đúng định dạng email")]
+        [Required(ErrorMessage = "Require {0}")]
+        [EmailAddress(ErrorMessage="Email Format: example@gmail.com")]
         public string Email { get; set; }
     }
 }

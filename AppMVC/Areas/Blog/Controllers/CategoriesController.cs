@@ -29,7 +29,7 @@ namespace AppMVC.Areas.Blog.Controllers
         // GET: Blog/Categories
         public async Task<IActionResult> Index()
         {
-            //var appDBContext = _context.Categories.Include(c => c.ParentCategory);
+          
             var qr = (from c in _context.Categories select c)
                 .Include(c => c.ParentCategory)
                 .Include(c => c.CategoryChildren);

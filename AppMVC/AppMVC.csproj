@@ -39,8 +39,8 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.0" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.3" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGenerators.Mvc" Version="8.0.3" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.4" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGenerators.Mvc" Version="8.0.4" />
     <PackageReference Include="MimeKit" Version="4.6.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
@@ -58,6 +58,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Administrator\Data\" />
+    <Folder Include="Areas\Administrator\Models\" />
     <Folder Include="Areas\Blog\Data\" />
     <Folder Include="Areas\Blog\Models\Posts\" />
     <Folder Include="Areas\ContactManage\Data\" />
@@ -66,7 +68,6 @@
     <Folder Include="Areas\DatabaseManage\Models\" />
     <Folder Include="Areas\FileManage\Data\" />
     <Folder Include="Areas\FileManage\Models\" />
-    <Folder Include="Areas\Identity\Views\Account\" />
     <Folder Include="Areas\Identity\Views\Manage\" />
     <Folder Include="Areas\Identity\Views\User\" />
     <Folder Include="Areas\Identity\Views\Role\" />

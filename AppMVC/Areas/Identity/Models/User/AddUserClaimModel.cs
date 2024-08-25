@@ -4,14 +4,14 @@ namespace App.Areas.Identity.Models.UserViewModels
 {
   public class AddUserClaimModel
   {
-    [Display(Name = "Kiểu (tên) claim")]
-    [Required(ErrorMessage = "Phải nhập {0}")]
-    [StringLength(256, MinimumLength = 3, ErrorMessage = "{0} phải dài {2} đến {1} ký tự")]
+    [Display(Name = "Type (Name) Claim")]
+    [Required(ErrorMessage = "Require {0}")]
+    [StringLength(256, MinimumLength = 3, ErrorMessage = "{0} Length: {2} - {1} chars")]
     public string ClaimType { get; set; }
 
-    [Display(Name = "Giá trị")]
-    [Required(ErrorMessage = "Phải nhập {0}")]
-    [StringLength(256, MinimumLength = 3, ErrorMessage = "{0} phải dài {2} đến {1} ký tự")]
+    [Display(Name = "Value")]
+    [Required(ErrorMessage = "Require {0}")]
+    [StringLength(256, MinimumLength = 3, ErrorMessage = "{0} Length: {2} to {1} chars")]
     public string ClaimValue { get; set; }
 
   }

@@ -7,16 +7,16 @@ namespace App.Areas.Identity.Models.AccountViewModels
 {
     public class VerifyAuthenticatorCodeViewModel
     {
-        [Required(ErrorMessage = "Phải nhập {0}")]
-        [Display(Name = "Nhập mã đã lưu")]
+        [Required(ErrorMessage = "Require {0}")]
+        [Display(Name = "Type the code has saved")]
         public string Code { get; set; }
 
         public string ReturnUrl { get; set; }
 
-        [Display(Name = "Nhớ thông tin trình duyệt này?")]
+        [Display(Name = "Remember this Browser?")]
         public bool RememberBrowser { get; set; }
 
-        [Display(Name = "Nhớ thông tin đăng nhập?")]
+        [Display(Name = "Remember login infomation?")]
         public bool RememberMe { get; set; }
     }
 }

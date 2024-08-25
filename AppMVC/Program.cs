@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using Newtonsoft.Json;
@@ -121,6 +122,10 @@ services.AddTransient<IEmailSmsSender, SendMailServices>();
 //Register Cart Services
 services.AddTransient<CartServices>();
 
+//Access to Url Helper 
+services.AddTransient<ActionContextAccessor>();
+
+services.AddTransient<SideBarRenderServices>();
 
 
 var app = builder.Build();

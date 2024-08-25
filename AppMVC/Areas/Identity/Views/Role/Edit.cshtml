@@ -1,7 +1,7 @@
 @model EditRoleModel
  
 @{
-    ViewData["Title"] = "Cập nhật role";
+    ViewData["Title"] = "Update Role";
 }
 <h2>@ViewData["Title"]</h2>
 <partial name="_StatusMessage" />
@@ -20,12 +20,12 @@
 
             <div class="form-group">
                 <input type="submit" value="Update" class="btn btn-primary" />
-                <a class="btn btn-primary" asp-action="Index">Danh sách các role</a>
+                <a class="btn btn-primary" asp-action="Index">List of Roles</a>
             </div>
         </form>
         <hr>
-        <p>Các đặc tính  (claim) của role:
-            <a asp-action="AddRoleClaim" asp-route-roleid="@Model.role.Id">+ Thêm claim</a>
+        <p>The Claim of role:
+            <a asp-action="AddRoleClaim" asp-route-roleid="@Model.role.Id">+ Add Claim</a>
         </p>
         @if (Model.Claims.Count > 0)
         {
