@@ -81,3 +81,7 @@
     justify-items: center;
     justify-content: center;
 }
+
+.card .card-img{
+    object-fit: contain;
+}

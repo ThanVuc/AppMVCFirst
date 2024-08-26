@@ -4,6 +4,7 @@ using AppMVC.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AppMVC.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    partial class AppDBContextModelSnapshot : ModelSnapshot
+    [Migration("20240826021026_DeletePostImage")]
+    partial class DeletePostImage
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -188,27 +191,6 @@ namespace AppMVC.Migrations
                     b.HasIndex("CategoryID");
 
                     b.ToTable("PostCategories");
-                });
-
-            modelBuilder.Entity("AppMVC.Models.Blog.PostImage", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("FileName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("PostId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PostId");
-
-                    b.ToTable("PostImages");
                 });
 
             modelBuilder.Entity("AppMVC.Models.Contact.ContactModel", b =>
@@ -614,17 +596,6 @@ namespace AppMVC.Migrations
                     b.Navigation("Post");
                 });
 
-            modelBuilder.Entity("AppMVC.Models.Blog.PostImage", b =>
-                {
-                    b.HasOne("AppMVC.Models.Blog.Post", "Post")
-                        .WithMany("PostImages")
-                        .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Post");
-                });
-
             modelBuilder.Entity("AppMVC.Models.Product.Bill", b =>
                 {
                     b.HasOne("AppMVC.Models.AppUser", "Customer")
@@ -790,8 +761,6 @@ namespace AppMVC.Migrations
             modelBuilder.Entity("AppMVC.Models.Blog.Post", b =>
                 {
                     b.Navigation("PostCategories");
-
-                    b.Navigation("PostImages");
                 });
 
             modelBuilder.Entity("AppMVC.Models.Product.Cart", b =>

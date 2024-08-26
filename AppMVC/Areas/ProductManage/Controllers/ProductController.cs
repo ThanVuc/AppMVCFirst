@@ -47,7 +47,7 @@ namespace AppMVC.Areas.ProductManage.Controllers
 
             // Take Constraint Entity
             var product = await _context.Products
-                .OrderByDescending(p => p.DateUpdated)
+                //.OrderByDescending(p => p.DateUpdated)
                 .Include(p => p.Seller)
                 .Include(p => p.ProductCategoryProducts)
                 .ThenInclude(pc => pc.CategoryProduct)

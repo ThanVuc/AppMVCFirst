@@ -4,6 +4,7 @@ using AppMVC.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AppMVC.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    partial class AppDBContextModelSnapshot : ModelSnapshot
+    [Migration("20240826021413_PostImageModel")]
+    partial class PostImageModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -617,7 +620,7 @@ namespace AppMVC.Migrations
             modelBuilder.Entity("AppMVC.Models.Blog.PostImage", b =>
                 {
                     b.HasOne("AppMVC.Models.Blog.Post", "Post")
-                        .WithMany("PostImages")
+                        .WithMany()
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -790,8 +793,6 @@ namespace AppMVC.Migrations
             modelBuilder.Entity("AppMVC.Models.Blog.Post", b =>
                 {
                     b.Navigation("PostCategories");
-
-                    b.Navigation("PostImages");
                 });
 
             modelBuilder.Entity("AppMVC.Models.Product.Cart", b =>

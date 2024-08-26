@@ -9,12 +9,12 @@
       "PackagePath": "staticwebassets\\css\\Contact\\sendcontact.css"
     },
     {
-      "Id": "D:\\Asp.Net\\MVC\\AppMVCFirst\\appmvc\\wwwroot\\css\\Product\\UploadProductImage.css",
-      "PackagePath": "staticwebassets\\css\\Product\\UploadProductImage.css"
-    },
-    {
       "Id": "D:\\Asp.Net\\MVC\\AppMVCFirst\\appmvc\\wwwroot\\css\\Product\\ViewProduct.css",
       "PackagePath": "staticwebassets\\css\\Product\\ViewProduct.css"
+    },
+    {
+      "Id": "D:\\Asp.Net\\MVC\\AppMVCFirst\\appmvc\\wwwroot\\css\\UploadImage.css",
+      "PackagePath": "staticwebassets\\css\\UploadImage.css"
     },
     {
       "Id": "D:\\Asp.Net\\MVC\\AppMVCFirst\\appmvc\\wwwroot\\css\\share\\loginpartial.css",

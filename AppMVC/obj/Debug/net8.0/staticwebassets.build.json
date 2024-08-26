@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "hIwKd5/mGXvAxhTTgIZ28J4W6r+oOeeuT32Znhn6LqU=",
+  "Hash": "jnONYJkB58ExUxWg/oO1qVsqBYsPzxNRf8PWP+KAg1s=",
   "Source": "AppMVC",
   "BasePath": "_content/AppMVC",
   "Mode": "Default",
@@ -1214,25 +1214,6 @@
       "OriginalItemSpec": "wwwroot\\css\\Contact\\sendcontact.css"
     },
     {
-      "Identity": "D:\\Asp.Net\\MVC\\AppMVCFirst\\appmvc\\wwwroot\\css\\Product\\UploadProductImage.css",
-      "SourceId": "AppMVC",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\Asp.Net\\MVC\\AppMVCFirst\\appmvc\\wwwroot\\",
-      "BasePath": "_content/AppMVC",
-      "RelativePath": "css/Product/UploadProductImage.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\Product\\UploadProductImage.css"
-    },
-    {
       "Identity": "D:\\Asp.Net\\MVC\\AppMVCFirst\\appmvc\\wwwroot\\css\\Product\\ViewProduct.css",
       "SourceId": "AppMVC",
       "SourceType": "Discovered",
@@ -1307,6 +1288,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\styles.css"
+    },
+    {
+      "Identity": "D:\\Asp.Net\\MVC\\AppMVCFirst\\appmvc\\wwwroot\\css\\UploadImage.css",
+      "SourceId": "AppMVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Asp.Net\\MVC\\AppMVCFirst\\appmvc\\wwwroot\\",
+      "BasePath": "_content/AppMVC",
+      "RelativePath": "css/UploadImage.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\UploadImage.css"
     },
     {
       "Identity": "D:\\Asp.Net\\MVC\\AppMVCFirst\\appmvc\\wwwroot\\css\\viewblog\\blog_layout.css",

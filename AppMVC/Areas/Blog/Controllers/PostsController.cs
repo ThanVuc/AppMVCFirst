@@ -11,6 +11,8 @@ using Microsoft.AspNetCore.Identity;
 using App.Utilities;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Authorization;
+using AppMVC.Areas.ProductManage.Models;
+using AppMVC.Models.Product;
 
 namespace AppMVC.Areas.Blog.Controllers
 {
@@ -284,6 +286,96 @@ namespace AppMVC.Areas.Blog.Controllers
         private bool PostExists(int id)
         {
             return _context.Posts.Any(e => e.PostId == id);
+        }
+
+        // List Json Image
+        public IActionResult ListImage(int id)
+        {
+            var post = _context.Posts
+                .Include(p => p.PostImages)
+                .FirstOrDefault(p => p.PostId == id);
+
+            if (post == null)
+            {
+                return Json(new
+                {
+                    success = 0,
+                    message = "Product Not Found"
+                });
+            }
+
+            var listData = post.PostImages.Select(img => new
+            {
+                id = img.Id,
+                path = "/image/post/" + img.FileName
+            });
+
+            return Json(new
+            {
+                success = 1,
+                images = listData
+            });
+        }
+
+        //Delete with API
+        [HttpPost("/post/api/delete-image/{id?}")]
+        public async Task<IActionResult> DeleteImage(int? id)
+        {
+            if (id != null)
+            {
+                var item = await _context.PostImages.FirstOrDefaultAsync(img => img.Id == id);
+                // Delete In Folder
+                string file = Path.Combine("image", "post", item.FileName);
+                System.IO.File.Delete(file);
+
+
+                // Delete in DB
+                _context.Remove(item);
+                await _context.SaveChangesAsync();
+            }
+            return Ok();
+        }
+
+
+        // Upload Image with API
+        [HttpPost("/post/api/upload-image/{id?}"), ActionName("UploadImageAPI")]
+        public async Task<IActionResult> UploadImageAPI(int id, [Bind("UploadImage")] UploadFile f)
+        {
+            var post = _context.Posts
+                .Include(p => p.PostImages)
+                .FirstOrDefault(p => p.PostId == id);
+
+            if (post == null)
+            {
+                return Json(new
+                {
+                    status = 404,
+                    message = "Not Found Product"
+                });
+            }
+
+            if (f != null)
+            {
+                var fileName = Path.GetFileNameWithoutExtension(Path.GetRandomFileName())
+                    + Path.GetExtension(f.UploadImage.FileName);
+
+                var file = Path.Combine("image", "post", fileName);
+
+                using (FileStream fStream = new FileStream(file, FileMode.Create))
+                {
+                    await f.UploadImage.CopyToAsync(fStream);
+                }
+
+                // Upload Database
+                _context.PostImages.Add(new PostImage()
+                {
+                    FileName = fileName,
+                    Post = post
+                });
+                await _context.SaveChangesAsync();
+            }
+
+            return Ok();
         }
     }
 }

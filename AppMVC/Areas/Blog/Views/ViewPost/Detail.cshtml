@@ -7,6 +7,9 @@
     string authorName = Model.Author == null ? "Admin" : Model.Author.Email;
 }
 
+<link rel="stylesheet" href="~/css/Product/ViewProduct.css" />
+
+
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a asp-action="Index" asp-route-categoryslug="">Home</a></li>
@@ -44,6 +47,20 @@
     </div>
     
     <div class="content">
+        <div class="content">
+            <div class="img">
+                @if (Model.PostImages.Any())
+                {
+                    foreach (var imgPath in Model.PostImages)
+                    {
+                        <img src="/image/post/@imgPath.FileName" />
+                    }
+                }
+            </div>
+            <p>
+                @Model.Content
+            </p>
+        </div>
         <p>
             @Model.Content
         </p>

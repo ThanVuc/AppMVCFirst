@@ -7,6 +7,11 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>@ViewData["Title"]</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/AppMVC.styles.css" asp-append-version="true" />
+
     <link href="/css/styles.css" rel="stylesheet" />
     <script src="/lib/font-awesome/js/all.js" crossorigin="anonymous"></script>
     <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
@@ -30,11 +35,11 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" asp-controller="Manage" asp-action="Index"  >User Manage</a></li>
+                    <li><a class="dropdown-item" asp-area="Identity" asp-controller="Manage" asp-action="Index"  >User Manage</a></li>
                     <li><hr class="dropdown-divider" /></li>
                     <li>
-                        <form method="post" asp-controller="Account" asp-action="LogOff">
-                            <a class="dropdown-item" >Logout</a>
+                        <form method="post" asp-area="Identity" asp-controller="Account" asp-action="LogOff">
+                            <button class="dropdown-item" >Logout</button>
                         </form>
                     </li>
                 </ul>
@@ -76,6 +81,10 @@
             </footer>
         </div>
     </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
 
 </body>

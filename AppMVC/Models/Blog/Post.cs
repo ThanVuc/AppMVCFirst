@@ -42,5 +42,7 @@ namespace AppMVC.Models.Blog
         [Display(Name = "Updated Date")]
         public DateTime DateUpdated { set; get; }
 
+        public List<PostImage> PostImages { get; set; }
+
     }
 }

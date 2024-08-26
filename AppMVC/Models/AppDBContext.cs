@@ -18,6 +18,7 @@ namespace AppMVC.Models
         public DbSet<ProductModel> Products { get; set; }
         public DbSet<ProductCategoryProduct> ProductCategoryProducts { get; set; }
         public DbSet<ProductImage> ProductImages { get; set; }
+        public DbSet<PostImage> PostImages { get; set; }
 
         // Cart
         public DbSet<Cart> Carts { get; set; }

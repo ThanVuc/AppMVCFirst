@@ -1,73 +1,106 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-    var message = TempData["message"];
-
+﻿
+@section head {
+    <link href="/css/instruction.css" rel="stylesheet" />
 }
 
-<partial name="_StatusMessage" model="@message" />
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container">
+    <h2 class="text-center title">Instruction About Project</h2>
+    <ol>
+        <li class="Heading">
+            Purpose:
+            <div style="color: black">
+                This web application has the target to support the bloggers who post their blogs to everyone
+                and based on this influence, they can sell their product to everyone who needs it.
+                My target is to provide a convenient platform for bloggers to use their influent
+            </div>
+        </li>
+        <hr>
+        <li class="Heading">
+            Object
+            <ul>
+                <li>Reader, Buyer: Read the blog and buy the product of the blogger </li>
+                <li>Blogger, Seller: Create the blog and show each to the reader, and sell their product</li>
+                <li>Administrator: Management all of the website</li>
+            </ul>
+        </li>
+
+        <hr>
+
+        <li class="Heading">
+            Functional
+            <ul>
+                <li class="functional-heading">
+                    Identity – Permission for reader, blogger and administrator
+                    <ul>
+                        <li>Account (Login, Logout, Forgot Password, Link with external services: Google, Facebook,…)</li>
+                        <li>Private User Manage: Customize user account information: Edit Profile, Render Recovery Code, 2-factor authentication, Set password, Add Phone Number…</li>
+                        <li>Role Manage: CRUD user permission, claim, policy,…</li>
+                        <li>User Manage: CRUD user account, user permission…</li>
+                    </ul>
+                </li>
+                <li class="functional-heading">
+                    Blog
+                    <ul>
+                        <li>CRUD for the post, breadcrumb</li>
+                        <li>CRUD for the category of the blog, the parent-children relationship of Category, Align for this relationship</li>
+                        <li>Upload image for post</li>
+                        <li>Show posts for user view, access via slug</li>
+                    </ul>
+                </li>
+                <li class="functional-heading">
+                    Product
+                    <ul>
+                        <li>CRUD like blog</li>
+                        <li>Create a shopping cart that stores into Session</li>
+                    </ul>
+                </li>
+                <li class="functional-heading">
+                    Database
+                    <ul>
+                        <li>Show all database information: Scheme, status, migrations</li>
+                        <li>Delete database, Create Database, Seed data</li>
+                    </ul>
+                </li>
+                <li class="functional-heading">
+                    Contact
+                    <ul>
+                        <li>CRUD contact</li>
+                        <li>Send contact without authorize</li>
+                    </ul>
+                </li>
+                <li class="functional-heading">
+                    File Manage
+                    <ul>
+                        <li>Mange file with elFinder</li>
+                        <li>Create file interface for easy management of file</li>
+                    </ul>
+                </li>
+                <li class="functional-heading">
+                    Email
+                    <ul>
+                        <li>It can send mail for the user when using Identity or each other function needed to send mail</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+
+        <hr>
+
+        <li class="Heading">
+            Technical
+            <ul>
+                <li>Core: Asp.Net core MVC (NET 8)</li>
+                <li>Identity Library(Authentication, Authorization)</li>
+                <li>Entity Framework (ORM, LINQ)</li>
+                <li>Dependency Injection</li>
+                <li>MailKit</li>
+                <li>SQL Server</li>
+                <li>ElFinder</li>
+                <li>JQuery</li>
+                <li>Paging Technique</li>
+                <li>Migrations, Code First</li>
+            </ul>
+        </li>
+    </ol>
 </div>
-
-@* Generate Url Without Area *@
-@Url.Action("Mercury","Planet", new {id = 123,name="NoName"})
-<br />
-@Url.Action("Index", "Product", new { area = "ProductManage", id = 123, name = "NoName" })
-<br />
-@* Generate Url With Area *@
-@Url.Link("product",new { action = "Index", controller = "Product", id = "123", name = "sinh" })
-@Url.RouteUrl("product", new { area = "ProductManage" ,action = "Index", controller = "Product", id = "123", name = "sinh" })
-
-<textarea id="summernote"></textarea>
-
-@{
-    var sumernote = new SummernoteSetting("summernote",true);
-}
-
-@section Scripts {
-    <partial name="_Summernote" model="@sumernote" />
-
-}
-
-
-
-
-
-
-
-@*
-    @section Scripts {
-
-    <link rel="stylesheet" href = "~/lib/summernote/summernote-lite.min.css" />
-    <script src="~/lib/summernote/summernote-lite.min.js" ></script>
-
-    <script>
-        $(document).ready(function(){
-            $('#summernote').summernote({
-                placeholder: "",
-                height: 120,
-                toolbar: [
-                    ['style', ['style']],
-                    ['font', ['bold', 'underline', 'clear']],
-                    ['color', ['color']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                    ['table', ['table']],
-                    ['insert', ['link', 'picture', 'video']],
-                    ['view', ['fullscreen', 'codeview', 'help']]
-                ]
-            });
-        })
-
-
-    </script>
-
-}
-
-*@
-
-
-
-
-

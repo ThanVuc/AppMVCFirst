@@ -45,6 +45,7 @@ namespace AppMVC.Areas.Blog.Controllers
                 .Include(p => p.Author)
                 .Include(p => p.PostCategories)
                 .ThenInclude(pc => pc.Category)
+                .Include(p => p.PostImages)
                 .AsQueryable();
 
             posts.OrderByDescending(p => p.DateUpdated);
@@ -58,6 +59,8 @@ namespace AppMVC.Areas.Blog.Controllers
                 posts = _context.PostCategories
                     .Include(pc => pc.Post)
                     .ThenInclude(p => p.Author)
+                    .Include(pc => pc.Post)
+                    .ThenInclude(p => p.PostImages)
                     .Where(pc => ids.Contains(pc.CategoryID))
                     .Select(pc => pc.Post);
             }
@@ -91,6 +94,7 @@ namespace AppMVC.Areas.Blog.Controllers
                 .Include(p => p.Author)
                 .Include(p => p.PostCategories)
                 .ThenInclude(p => p.Category)
+                .Include(p => p.PostImages)
                 .FirstOrDefaultAsync(p => p.Slug == slug);
 
             ViewBag.category = post.PostCategories.FirstOrDefault()?.Category;

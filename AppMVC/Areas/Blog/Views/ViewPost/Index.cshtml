@@ -29,10 +29,16 @@
 
 @foreach (var item in Model)
 {
+    string imagePath = "/image/no-image.png";
+    if (item.PostImages.Any())
+    {
+        imagePath = "/image/post/" + item.PostImages.First().FileName;
+    }
+
     <div class="card mt-3" style="max-width: 100%;">
         <div class="row g-0">
             <div class="col-md-4">
-                <img src="/image/no-image.png" class="img-fluid rounded-start" alt="...">
+                <img src="@imagePath" class="img-fluid rounded-start card-img " alt="...">
             </div>
             <div class="col-md-8">
                 <div class="card-body">

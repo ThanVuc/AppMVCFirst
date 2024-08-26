@@ -72,6 +72,7 @@
     <Folder Include="Areas\Identity\Views\User\" />
     <Folder Include="Areas\Identity\Views\Role\" />
     <Folder Include="Areas\ProductManage\Data\" />
+    <Folder Include="Image\post\" />
     <Folder Include="wwwroot\files\" />
   </ItemGroup>
 
